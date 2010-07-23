@@ -1,6 +1,6 @@
 package edu.wustl.domain;
 
-import edu.wustl.authmanager.MigrationState;
+import edu.wustl.migrator.MigrationState;
 
 public class UserDetails
 {
@@ -9,6 +9,18 @@ public class UserDetails
     private String migratedLoginName;
 
     private MigrationState migrationState;
+
+    private String targetIDP;
+
+    public String getTargetIDP()
+    {
+        return targetIDP;
+    }
+
+    public void setTargetIDP(final String targetIDP)
+    {
+        this.targetIDP = targetIDP;
+    }
 
     public String getMigratedLoginName()
     {

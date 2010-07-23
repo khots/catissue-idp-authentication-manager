@@ -3,7 +3,6 @@ package edu.wustl.migrator;
 import java.util.List;
 
 import edu.wustl.authmanager.IAbstractIDP;
-import edu.wustl.authmanager.MigrationState;
 import edu.wustl.common.exception.ApplicationException;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.exception.MigratorException;

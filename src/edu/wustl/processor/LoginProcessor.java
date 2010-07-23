@@ -6,9 +6,9 @@ import edu.wustl.authmanager.CSMAuthManager;
 import edu.wustl.authmanager.IDPAuthManager;
 import edu.wustl.authmanager.LDAPAuthManager;
 import edu.wustl.authmanager.LoginResult;
-import edu.wustl.authmanager.MigrationState;
 import edu.wustl.common.exception.ApplicationException;
 import edu.wustl.domain.UserDetails;
+import edu.wustl.migrator.MigrationState;
 import edu.wustl.migrator.util.Utility;
 
 public class LoginProcessor
