@@ -2,10 +2,11 @@ package edu.wustl.processor;
 
 import java.util.List;
 
-import edu.wustl.authmanager.CSMAuthManager;
+import edu.wustl.auth.exception.AuthenticationException;
+import edu.wustl.authmanager.CSMIDPAuthManager;
 import edu.wustl.authmanager.IDPAuthManager;
 import edu.wustl.authmanager.LDAPAuthManager;
-import edu.wustl.authmanager.LoginResult;
+import edu.wustl.domain.LoginResult;
 import edu.wustl.common.exception.ApplicationException;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.MigrationState;
@@ -44,7 +45,7 @@ public class LoginProcessor
             }
             else
             {
-                final IDPAuthManager authManager = new CSMAuthManager();
+                final IDPAuthManager authManager = new CSMIDPAuthManager();
                 loginResult.setAuthenticationSuccess(authManager.authenticate(loginName, password));
                 loginResult.setMigrationState(MigrationState.TO_BE_MIGRATED);
             }
@@ -52,6 +53,10 @@ public class LoginProcessor
         catch (final ApplicationException e)
         {
             //
+        }
+        catch (AuthenticationException e)
+        {
+
         }
         loginResult.setLoginId(loginName);
         return loginResult;
@@ -72,9 +77,16 @@ public class LoginProcessor
         {
             loginResult.setLoginId(userDetails.getLoginName());
             loginResult.setMigrationState(MigrationState.DO_NOT_MIGRATE);
-            authManager = new CSMAuthManager();
+            authManager = new CSMIDPAuthManager();
         }
+        try
+        {
         loginResult.setAuthenticationSuccess(authManager.authenticate(loginName, password));
+        }catch (AuthenticationException e)
+        {
+
+        }
+
         return loginResult;
     }
 
