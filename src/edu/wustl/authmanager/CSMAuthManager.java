@@ -9,7 +9,7 @@ import edu.wustl.security.manager.SecurityManagerFactory;
  * @author supriya_dankh
  *
  */
-public class CSMIDPAuthManager extends IDPAuthManagerImpl {
+public class CSMAuthManager extends IDPAuthManagerImpl {
 	protected void initialize() {
 
 	}
