@@ -1,6 +1,7 @@
 package edu.wustl.migrator;
 
-import edu.wustl.authmanager.IAbstractIDP;
+import edu.wustl.abstractidp.IAbstractIDP;
+
 
 public class WUSTLKeyMigrator extends AbstractMigrator {
 
