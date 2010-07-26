@@ -29,10 +29,10 @@ public class LDAPAuthManager extends IDPAuthManagerImpl {
 	{
 		env.put("java.naming.factory.initial", "com.sun.jndi.ldap.LdapCtxFactory");
 		env.put("java.naming.security.authentication","simple");
-		env.put("java.naming.provider.url", "ldap://10.39.225.39:636/");
-		env.put("java.naming.security.principal", "CN=cider binduser,OU=medical school,OU=service accounts,DC=wuaddev,DC=wustl,DC=edu");
-		env.put("java.naming.security.credentials", "TLdUGv2wS385QxXRo9Km");
-		env.put("java.naming.security.protocol", "ssl");
+		env.put("java.naming.provider.url", "ldap://10.88.26.32:10389/");
+		env.put("java.naming.security.principal", "uid=admin,ou=system");
+		env.put("java.naming.security.credentials", "secret");
+		//env.put("java.naming.security.protocol", "ssl");
 
 		/*if(domainProperties.getProperty("securityProtocol") != null) {
 			env.put("java.naming.security.protocol", domainProperties.getProperty("securityProtocol"));
@@ -72,14 +72,14 @@ public class LDAPAuthManager extends IDPAuthManagerImpl {
 		searchCtls.setReturningAttributes(returnAttributes);
 		searchCtls.setSearchScope(SearchControls.SUBTREE_SCOPE);
 
-		String searchFilter = "(sAMAccountName=name)";
-		String string_to_replace = "name";
+		String searchFilter = "CN=Users";
+		String string_to_replace = "Users";
 		if(searchFilter.indexOf(string_to_replace) != -1)
 		{
 			searchFilter = searchFilter.replace(string_to_replace, userName);
 		}
 
-		String searchBase = "OU=Faculty,OU=Current,OU=People,DC=wuaddev,DC=wustl,DC=edu";
+		String searchBase = "ou=users,ou=system";
 		NamingEnumeration<SearchResult> answer = ctx.search(searchBase, searchFilter, searchCtls);
 		while(answer.hasMoreElements())
 		{
