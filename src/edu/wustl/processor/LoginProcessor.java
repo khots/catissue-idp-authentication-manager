@@ -6,18 +6,47 @@ import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.authmanager.CSMAuthManager;
 import edu.wustl.authmanager.IDPAuthManager;
 import edu.wustl.authmanager.LDAPAuthManager;
-import edu.wustl.domain.LoginResult;
 import edu.wustl.common.exception.ApplicationException;
+import edu.wustl.common.util.XMLPropertyHandler;
+import edu.wustl.domain.LoginResult;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.MigrationState;
 import edu.wustl.migrator.util.Utility;
+import edu.wustl.wustlkey.util.global.Constants;
 
+/**
+ * This class contains the generic workflows in an application supporting single
+ * or multiple domains for operations like authentication of users, etc.
+ *
+ * @author niharika_sharma
+ *
+ */
 public class LoginProcessor
 {
+
+    /**
+     * Process user login.
+     *
+     * @param loginName
+     *            the login name
+     * @param password
+     *            the password
+     *
+     * @return the login result
+     */
     public static LoginResult processUserLogin(final String loginName, final String password)
     {
         final LoginResult loginResult;
-        final UserDetails userDetails = getUserDetails(loginName);
+        UserDetails userDetails;
+        if (Boolean.parseBoolean(XMLPropertyHandler.getValue("idp.enabled")))
+        {
+            userDetails = getUserDetails(loginName);
+        }
+        else
+        {
+            userDetails = null;
+        }
+
         if (userDetails == null)
         {
             loginResult = processUserLoginWithoutMigrationInfo(loginName, password);
@@ -26,9 +55,24 @@ public class LoginProcessor
         {
             loginResult = processUserLoginWithMigrationInfo(loginName, password, userDetails);
         }
+        System.out.println("");
+        if (!Boolean.parseBoolean(XMLPropertyHandler.getValue("idp.enabled")))
+        {
+            loginResult.setMigrationState(MigrationState.DO_NOT_MIGRATE);
+        }
         return loginResult;
     }
 
+    /**
+     * Process user login without migration info.
+     *
+     * @param loginName
+     *            the login name
+     * @param password
+     *            the password
+     *
+     * @return the login result
+     */
     private static LoginResult processUserLoginWithoutMigrationInfo(final String loginName, final String password)
     {
         final LoginResult loginResult = new LoginResult();
@@ -47,21 +91,41 @@ public class LoginProcessor
             {
                 final IDPAuthManager authManager = new CSMAuthManager();
                 loginResult.setAuthenticationSuccess(authManager.authenticate(loginName, password));
-                loginResult.setMigrationState(MigrationState.TO_BE_MIGRATED);
+                if (loginName.endsWith(Constants.WUSTL_EDU) || loginName.endsWith(Constants.WUSTL_EDU_CAPS))
+                {
+                    loginResult.setMigrationState(MigrationState.TO_BE_MIGRATED);
+                }
+                else
+                {
+                    loginResult.setMigrationState(MigrationState.DO_NOT_MIGRATE);
+                }
+
             }
         }
         catch (final ApplicationException e)
         {
             //
         }
-        catch (AuthenticationException e)
+        catch (final AuthenticationException e)
         {
 
         }
-        loginResult.setLoginId(loginName);
+        loginResult.setAppLoginName(loginName);
         return loginResult;
     }
 
+    /**
+     * Process user login with migration info.
+     *
+     * @param loginName
+     *            the login name
+     * @param password
+     *            the password
+     * @param userDetails
+     *            the user details
+     *
+     * @return the login result
+     */
     private static LoginResult processUserLoginWithMigrationInfo(final String loginName, final String password,
             final UserDetails userDetails)
     {
@@ -70,19 +134,21 @@ public class LoginProcessor
         if (MigrationState.MIGRATED.equals(userDetails.getMigrationState()))
         {
             loginResult.setMigrationState(MigrationState.MIGRATED);
-            loginResult.setLoginId(userDetails.getMigratedLoginName());
+            loginResult.setAppLoginName(userDetails.getLoginName());
+            loginResult.setMigratedLoginName(userDetails.getMigratedLoginName());
             authManager = new LDAPAuthManager();
         }
         else
         {
-            loginResult.setLoginId(userDetails.getLoginName());
+            loginResult.setAppLoginName(userDetails.getLoginName());
             loginResult.setMigrationState(MigrationState.DO_NOT_MIGRATE);
             authManager = new CSMAuthManager();
         }
         try
         {
-        loginResult.setAuthenticationSuccess(authManager.authenticate(loginName, password));
-        }catch (AuthenticationException e)
+            loginResult.setAuthenticationSuccess(authManager.authenticate(loginName, password));
+        }
+        catch (final AuthenticationException e)
         {
 
         }
@@ -90,6 +156,14 @@ public class LoginProcessor
         return loginResult;
     }
 
+    /**
+     * Gets the user details.
+     *
+     * @param loginName
+     *            the login name
+     *
+     * @return the user details
+     */
     private static UserDetails getUserDetails(final String loginName)
     {
         UserDetails userDetails = null;
