@@ -3,38 +3,59 @@ package edu.wustl.migrator;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.exception.MigratorException;
 
-
-
 /**
- * @version 1.0
- * @created 21-Jul-2010 3:22:18 PM
+ * This interface defines the behaviour of the migrators to be defined in the
+ * system.
+ *
+ * @author niharika_sharma
  */
-public interface IAbstractMigrator {
+public interface IAbstractMigrator
+{
 
-	/**
-	 *
-	 * @param userDetails
-	 */
-	public void checkMigrationRules(UserDetails userDetails) throws MigratorException;
+    /**
+     * Check migration rules.
+     *
+     * @param userDetails
+     *            the user details
+     *
+     * @throws MigratorException
+     *             the migrator exception
+     */
+    public void checkMigrationRules(UserDetails userDetails) throws MigratorException;
 
-	/**
-	 *
-	 * @param key
-	 */
-	public String getCSMName(String key) throws MigratorException;
+    /**
+     * Gets the csm name.
+     *
+     * @param key
+     *            the key
+     *
+     * @return the CSM name
+     *
+     * @throws MigratorException
+     *             the migrator exception
+     */
+    public String getCSMName(String key) throws MigratorException;
 
-	/**
-	 *
-	 * @param toIDP
-	 * @param fromIDP
-	 * @param userDetails
-	 */
-	public void migrate(UserDetails userDetails) throws MigratorException;
+    /**
+     * Migrate.
+     *
+     * @param userDetails
+     *            the user details
+     *
+     * @throws MigratorException
+     *             the migrator exception
+     */
+    public void migrate(UserDetails userDetails) throws MigratorException;
 
-	/**
-	 *
-	 * @param loginID
-	 */
-	public void neverMigrate(UserDetails userDetails) throws MigratorException;
+    /**
+     * Never migrate.
+     *
+     * @param loginName
+     *            the login name
+     *
+     * @throws MigratorException
+     *             the migrator exception
+     */
+    public void neverMigrate(String loginName) throws MigratorException;
 
 }

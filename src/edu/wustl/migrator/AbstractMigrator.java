@@ -8,21 +8,43 @@ import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.exception.MigratorException;
 import edu.wustl.migrator.util.Utility;
 
+/**
+ * Abstract class providing basic implementation of some of the methods of the
+ * implementing interface.
+ *
+ * @author niharika_sharma
+ *
+ */
 public abstract class AbstractMigrator implements IAbstractMigrator
 {
+
+    /** The target domain. */
     private final IAbstractIDP targetDomain;
 
+    /**
+     * Instantiates a new abstract migrator.
+     *
+     * @param targetDomain
+     *            the target domain
+     */
     public AbstractMigrator(final IAbstractIDP targetDomain)
     {
         this.targetDomain = targetDomain;
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * edu.wustl.migrator.IAbstractMigrator#migrate(edu.wustl.domain.UserDetails
+     * )
+     */
     public void migrate(final UserDetails userDetails) throws MigratorException
     {
         try
         {
             final String queryStr = "INSERT INTO CSM_MIGRATE_USER VALUES" + "('" + userDetails.getLoginName()
-                    + "','" + targetDomain.getName() + "','" + userDetails.getMigratedLoginName() + "','"
+                    + "','" + userDetails.getMigratedLoginName() + "','" + targetDomain.getName() + "','"
                     + MigrationState.MIGRATED + "')";
             Utility.executeQueryUsingDataSource(queryStr, true, "WUSTLKey");
         }
@@ -32,12 +54,24 @@ public abstract class AbstractMigrator implements IAbstractMigrator
         }
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see
+     * edu.wustl.migrator.IAbstractMigrator#checkMigrationRules(edu.wustl.domain
+     * .UserDetails)
+     */
     public void checkMigrationRules(final UserDetails userDetails) throws MigratorException
     {
         // TODO Auto-generated method stub
 
     }
 
+    /*
+     * (non-Javadoc)
+     *
+     * @see edu.wustl.migrator.IAbstractMigrator#getCSMName(java.lang.String)
+     */
     public String getCSMName(final String migratedLoginName) throws MigratorException
     {
         String csmName = null;
@@ -58,23 +92,25 @@ public abstract class AbstractMigrator implements IAbstractMigrator
         {
             throw new MigratorException(appException);
         }
-
         return csmName;
     }
 
-    public void neverMigrate(final UserDetails userDetails) throws MigratorException
+    /*
+     * (non-Javadoc)
+     *
+     * @see edu.wustl.migrator.IAbstractMigrator#neverMigrate(java.lang.String)
+     */
+    public void neverMigrate(final String loginName) throws MigratorException
     {
         try
         {
-            final String queryStr = "INSERT INTO CSM_MIGRATE_USER VALUES" + "('" + userDetails.getLoginName()
-                    + "','" + targetDomain.getName() + "',null,'" + MigrationState.DO_NOT_MIGRATE + "')";
+            final String queryStr = "INSERT INTO CSM_MIGRATE_USER VALUES" + "('" + loginName + "',null,'"
+                    + targetDomain.getName() + "','" + MigrationState.DO_NOT_MIGRATE + "')";
             Utility.executeQueryUsingDataSource(queryStr, true, "WUSTLKey");
         }
         catch (final ApplicationException appException)
         {
             throw new MigratorException(appException);
         }
-
     }
-
 }
