@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author supriya_dankh
  *
  */
-public abstract class AbstractIDP {
+public abstract class AbstractIDP implements IAbstractIDP {
 	private String name;
 	private String displayName;
 	private boolean defaultIdp;
@@ -20,7 +20,7 @@ public abstract class AbstractIDP {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = name;
 	}
 
@@ -28,7 +28,7 @@ public abstract class AbstractIDP {
 		return displayName;
 	}
 
-	public void setDisplayName(String displayName) {
+	public void setDisplayName(final String displayName) {
 		this.displayName = displayName;
 	}
 
@@ -36,7 +36,7 @@ public abstract class AbstractIDP {
 		return defaultIdp;
 	}
 
-	public void setDefaultIdp(boolean defaultIdp) {
+	public void setDefaultIdp(final boolean defaultIdp) {
 		this.defaultIdp = defaultIdp;
 	}
 
@@ -44,7 +44,7 @@ public abstract class AbstractIDP {
 		return userProperties;
 	}
 
-	public void setUserProperties(Properties userProperties) {
+	public void setUserProperties(final Properties userProperties) {
 		this.userProperties = userProperties;
 	}
 
@@ -52,8 +52,20 @@ public abstract class AbstractIDP {
 		return idpProperties;
 	}
 
-	public void setIdpProperties(Properties idpProperties) {
+	public void setIdpProperties(final Properties idpProperties) {
 		this.idpProperties = idpProperties;
 	}
+
+    public Properties getIDPProperties()
+    {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    public boolean isDefaultIDP()
+    {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }
