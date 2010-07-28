@@ -11,10 +11,10 @@ import java.util.Properties;
  */
 public interface IAbstractIDP {
 
-	public String getName();
-    public String getDisplayName();
-    public Properties getIDPProperties();
-    public Properties getUserProperties();
-    public boolean isDefaultIDP();
+	String getName();
+    String getDisplayName();
+    Properties getIDPProperties();
+    Properties getUserProperties();
+    boolean isDefaultIDP();
 
 }
