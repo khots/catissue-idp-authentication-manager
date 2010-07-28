@@ -10,12 +10,12 @@ import org.apache.struts.action.ActionMapping;
 import edu.wustl.abstractidp.WustlKeyIDP;
 import edu.wustl.authmanager.IDPAuthManager;
 import edu.wustl.authmanager.LDAPAuthManager;
-import edu.wustl.common.beans.SessionDataBean;
 import edu.wustl.common.util.logger.LoggerConfig;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.IAbstractMigrator;
 import edu.wustl.migrator.WUSTLKeyMigrator;
 import edu.wustl.migrator.actionform.MigrationForm;
+import edu.wustl.migrator.exception.MigratorException;
 import edu.wustl.wustlkey.util.global.Constants;
 
 /**
@@ -42,43 +42,37 @@ public class MigrateUserAction extends AbstractMigrationAction
      */
     @Override
     public ActionForward execute(final ActionMapping mapping, final ActionForm form,
-            final HttpServletRequest request, final HttpServletResponse response) throws Exception
+            final HttpServletRequest request, final HttpServletResponse response) throws MigratorException
     {
+        String forwardTo=Constants.FAILURE;
         final MigrationForm loginForm = (MigrationForm) form;
-        boolean loginOK = false;
-        final String flag = (String) request.getAttribute(Constants.PAGE_OF_WUSTL_CONNECT);
-        if (flag != null && Constants.TRUE.equals(flag))
-        {
-            return mapping.findForward(Constants.SUCCESS);
-        }
-        final SessionDataBean sessionDataBean = getSessionData(request);
 
-        final IAbstractMigrator migrator = new WUSTLKeyMigrator(new WustlKeyIDP());
         try
         {
             final IDPAuthManager authManager = new LDAPAuthManager();
-            loginOK = authManager.authenticate(loginForm.getMigratedLoginName(), loginForm.getMigratedPassword());
-            if (!loginOK)
+            final boolean loginOK = authManager.authenticate(loginForm.getMigratedLoginName(), loginForm.getMigratedPassword());
+            if (loginOK)
             {
-                handleError(request, "errors.wustlkeyorpassword");
-                return mapping.findForward(Constants.FAILURE);
-            }
-            else
-            {
+                final IAbstractMigrator migrator = new WUSTLKeyMigrator(new WustlKeyIDP());
                 final UserDetails userDetails = new UserDetails();
-                userDetails.setLoginName(sessionDataBean.getUserName());
+                userDetails.setLoginName(getSessionData(request).getUserName());
                 userDetails.setMigratedLoginName(loginForm.getMigratedLoginName());
                 migrator.migrate(userDetails);
                 handleCustomMessage(request);
-                return mapping.findForward(Constants.LOGIN);
+                forwardTo=Constants.LOGIN;
+            }
+            else
+            {
+                handleError(request, "errors.wustlkeyorpassword");
+                forwardTo=Constants.FAILURE;
             }
         }
         catch (final Exception e)
         {
             LOGGER.info("Exception: " + e.getMessage(), e);
             handleError(request, "errors.wustlkeyorpassword");
-            return mapping.findForward(Constants.FAILURE);
         }
+        return mapping.findForward(forwardTo);
     }
 
 }

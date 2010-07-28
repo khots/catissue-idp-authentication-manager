@@ -11,6 +11,7 @@ import edu.wustl.abstractidp.WustlKeyIDP;
 import edu.wustl.common.util.logger.LoggerConfig;
 import edu.wustl.migrator.IAbstractMigrator;
 import edu.wustl.migrator.WUSTLKeyMigrator;
+import edu.wustl.migrator.exception.MigratorException;
 import edu.wustl.wustlkey.util.global.Constants;
 
 /**
@@ -37,15 +38,10 @@ public class NeverMigrateUserAction extends AbstractMigrationAction
      */
     @Override
     public ActionForward execute(final ActionMapping mapping, final ActionForm form,
-            final HttpServletRequest request, final HttpServletResponse response) throws Exception
+            final HttpServletRequest request, final HttpServletResponse response) throws MigratorException
     {
         String forwardTo = "failure";
-        // final String flag = (String)
-        // request.getAttribute(Constants.PAGE_OF_WUSTL_CONNECT);
-        // if (flag != null && Constants.TRUE.equals(flag))
-        // {
-        // return mapping.findForward(Constants.SUCCESS);
-        // }
+
         final String doNotAskAgain = request.getParameter(Constants.DO_NOT_ASK_AGAIN);
 
         final IAbstractMigrator migrator = new WUSTLKeyMigrator(new WustlKeyIDP());
