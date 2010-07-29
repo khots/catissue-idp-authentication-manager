@@ -8,6 +8,8 @@ import edu.wustl.authmanager.IDPAuthManager;
 import edu.wustl.authmanager.LDAPAuthManager;
 import edu.wustl.common.exception.ApplicationException;
 import edu.wustl.common.util.XMLPropertyHandler;
+import edu.wustl.common.util.global.CommonServiceLocator;
+import edu.wustl.common.util.logger.Logger;
 import edu.wustl.domain.LoginResult;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.MigrationState;
@@ -23,6 +25,10 @@ import edu.wustl.wustlkey.util.global.Constants;
  */
 public class LoginProcessor
 {
+    /**
+     * Private logger instance.
+     */
+    private static final Logger LOGGER = Logger.getCommonLogger(LoginProcessor.class);
 
     /**
      * Process user login.
@@ -78,8 +84,10 @@ public class LoginProcessor
         final LoginResult loginResult = new LoginResult();
         try
         {
-            final String queryStr = "SELECT * FROM CSM_USER WHERE LOGIN_NAME = '" + loginName + "'";
-            final List<List<String>> resultList = Utility.executeQueryUsingDataSource(queryStr, false, "WUSTLKey");
+            final String queryStr = "SELECT * FROM CATISSUE_USER WHERE LOGIN_NAME = '" + loginName + "'";
+
+            final List<List<String>> resultList = Utility.executeQueryUsingDataSource(queryStr, false,
+                    CommonServiceLocator.getInstance().getAppName());
             if (resultList == null)
             {
                 // New user
@@ -148,9 +156,9 @@ public class LoginProcessor
         {
             loginResult.setAuthenticationSuccess(authManager.authenticate(loginName, password));
         }
-        catch (final AuthenticationException e)
+        catch (final AuthenticationException authenticationException)
         {
-
+            LOGGER.debug(authenticationException);
         }
 
         return loginResult;
@@ -186,7 +194,7 @@ public class LoginProcessor
         }
         catch (final ApplicationException appException)
         {
-            // throw new MigratorException(appException);
+            LOGGER.debug(appException);
         }
         return userDetails;
     }
