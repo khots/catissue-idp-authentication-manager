@@ -57,19 +57,6 @@ public abstract class AbstractMigrator implements IAbstractMigrator
     /*
      * (non-Javadoc)
      *
-     * @see
-     * edu.wustl.migrator.IAbstractMigrator#checkMigrationRules(edu.wustl.domain
-     * .UserDetails)
-     */
-    public void checkMigrationRules(final UserDetails userDetails) throws MigratorException
-    {
-        // TODO Auto-generated method stub
-
-    }
-
-    /*
-     * (non-Javadoc)
-     *
      * @see edu.wustl.migrator.IAbstractMigrator#getCSMName(java.lang.String)
      */
     public String getCSMName(final String migratedLoginName) throws MigratorException

@@ -13,17 +13,6 @@ public interface IAbstractMigrator
 {
 
     /**
-     * Check migration rules.
-     *
-     * @param userDetails
-     *            the user details
-     *
-     * @throws MigratorException
-     *             the migrator exception
-     */
-    public void checkMigrationRules(UserDetails userDetails) throws MigratorException;
-
-    /**
      * Gets the csm name.
      *
      * @param key
