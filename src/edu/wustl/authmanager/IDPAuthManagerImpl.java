@@ -3,8 +3,7 @@
  */
 package edu.wustl.authmanager;
 
-import edu.wustl.abstractidp.IAbstractIDP;
-import edu.wustl.auth.exception.AuthenticationException;
+import edu.wustl.idp.IDPInterface;
 
 /**
  * @author supriya_dankh
@@ -13,9 +12,21 @@ import edu.wustl.auth.exception.AuthenticationException;
 public abstract class IDPAuthManagerImpl implements IDPAuthManager {
 
 
-	protected IAbstractIDP abstratIdp;
-	/* (non-Javadoc)
-	 * @see edu.wustl.authmanager.IDPAuthManager#authenticate(java.lang.String, java.lang.String)
-	 */
-	public abstract boolean authenticate(String loginName, String password)throws AuthenticationException;
+	protected IDPInterface idp;
+
+
+	public IDPAuthManagerImpl(final IDPInterface idp)
+	{
+         this.idp= idp;
+	}
+
+	public IDPAuthManagerImpl()
+	{
+
+	}
+	public IDPInterface getIDP()
+	{
+	    return idp;
+	}
+
 }

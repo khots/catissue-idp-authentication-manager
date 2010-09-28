@@ -4,6 +4,8 @@
 package edu.wustl.authmanager;
 
 import edu.wustl.auth.exception.AuthenticationException;
+import edu.wustl.domain.LoginCredentials;
+import edu.wustl.idp.IDPInterface;
 
 /**
  * @author supriya_dankh
@@ -11,7 +13,9 @@ import edu.wustl.auth.exception.AuthenticationException;
  */
 public interface IDPAuthManager {
 
-	public boolean authenticate(String loginName,String password)throws AuthenticationException;
+	public boolean authenticate(LoginCredentials credentials)throws AuthenticationException;
+
+	IDPInterface getIDP();
 
 
 }

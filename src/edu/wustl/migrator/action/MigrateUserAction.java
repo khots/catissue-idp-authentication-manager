@@ -1,5 +1,8 @@
 package edu.wustl.migrator.action;
 
+import java.util.List;
+import java.util.Properties;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -7,15 +10,17 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import edu.wustl.abstractidp.WustlKeyIDP;
 import edu.wustl.authmanager.IDPAuthManager;
-import edu.wustl.authmanager.LDAPAuthManager;
+import edu.wustl.authmanager.factory.AuthManagerFactory;
 import edu.wustl.common.util.logger.LoggerConfig;
+import edu.wustl.domain.LoginCredentials;
 import edu.wustl.domain.UserDetails;
-import edu.wustl.migrator.IAbstractMigrator;
-import edu.wustl.migrator.WUSTLKeyMigrator;
+import edu.wustl.idp.IDPInterface;
+import edu.wustl.migration.rules.RuleInterface;
+import edu.wustl.migrator.MigratorInterface;
 import edu.wustl.migrator.actionform.MigrationForm;
 import edu.wustl.migrator.exception.MigratorException;
+import edu.wustl.migrator.util.Utility;
 import edu.wustl.wustlkey.util.global.Constants;
 
 /**
@@ -44,35 +49,59 @@ public class MigrateUserAction extends AbstractMigrationAction
     public ActionForward execute(final ActionMapping mapping, final ActionForm form,
             final HttpServletRequest request, final HttpServletResponse response) throws MigratorException
     {
-        String forwardTo=Constants.FAILURE;
-        final MigrationForm loginForm = (MigrationForm) form;
-
+        String forwardTo = Constants.FAILURE;
+        final MigrationForm migrationForm = (MigrationForm) form;
+     //   migrationForm.setTargetIdp("WUSTLKEY_IDP");
         try
         {
-            final IDPAuthManager authManager = new LDAPAuthManager();
-            final boolean loginOK = authManager.authenticate(loginForm.getMigratedLoginName(), loginForm.getMigratedPassword());
+            final IDPAuthManager targetAuthManager = AuthManagerFactory.getInstance().getAuthManagerInstance(
+                    migrationForm.getTargetIdp());
+
+            final LoginCredentials loginCredentials = new LoginCredentials();
+            loginCredentials.setLoginName(migrationForm.getMigratedLoginName());
+            loginCredentials.setPassword(migrationForm.getMigratedPassword());
+
+            final boolean loginOK = targetAuthManager.authenticate(loginCredentials);
             if (loginOK)
             {
-                final IAbstractMigrator migrator = new WUSTLKeyMigrator(new WustlKeyIDP());
-                final UserDetails userDetails = new UserDetails();
-                userDetails.setLoginName(getSessionData(request).getUserName());
-                userDetails.setMigratedLoginName(loginForm.getMigratedLoginName());
-                migrator.migrate(userDetails);
-                handleCustomMessage(request);
-                forwardTo=Constants.LOGIN;
+                final IDPInterface sourceIdp = AuthManagerFactory.getInstance().getAuthManagerInstance().getIDP();
+                final List<Properties> migrationProperties = sourceIdp.getMigrationProperties();
+
+                for (final Properties properties : migrationProperties)
+                {
+                    final String migratorClassName = (String) properties
+                            .get(edu.wustl.migrator.util.Constants.MIGRATOR_CLASS_TAG_NAME);
+                    final String ruleClassName = (String) properties
+                            .get(edu.wustl.migrator.util.Constants.RULE_CLASS_TAG_NAME);
+                    final RuleInterface rule = (RuleInterface) edu.wustl.common.util.Utility
+                            .getObject(ruleClassName);
+                    final LoginCredentials baseIdpCredentials = new LoginCredentials();
+                    baseIdpCredentials.setLoginName(getSessionData(request).getUserName());
+                    if (rule.checkMigrationRules(baseIdpCredentials))
+                    {
+                        final MigratorInterface migrator = Utility.getMigratorInstance(migratorClassName,
+                                targetAuthManager.getIDP());
+                        final UserDetails userDetails = new UserDetails();
+                        userDetails.setLoginName(getSessionData(request).getUserName());
+                        userDetails.setMigratedLoginName(migrationForm.getMigratedLoginName());
+                        migrator.migrate(userDetails);
+                        handleCustomMessage(request);
+                        forwardTo = Constants.LOGIN;
+                        break;
+                    }
+                }
             }
             else
             {
-                handleError(request, "errors.wustlkeyorpassword");
-                forwardTo=Constants.FAILURE;
+                handleError(request, "errors.incorrectLoginIDPassword");
+                forwardTo = Constants.FAILURE;
             }
         }
         catch (final Exception e)
         {
             LOGGER.info("Exception: " + e.getMessage(), e);
-            handleError(request, "errors.wustlkeyorpassword");
+            handleError(request, "errors.incorrectLoginIDPassword");
         }
         return mapping.findForward(forwardTo);
     }
-
 }

@@ -18,6 +18,10 @@ public class Constants
     public static final String MIGRATED = "migrated";
     public static final String STATUS_MESSAGE_KEY = "statusMessageKey";
 
+    //For BJC LDAP testing
+    public static final String BJC_FOO= "bjc.foo";
+    public static final String BJC_FOO_CAPS = "bjc.foo";
+
     // Common
     public static final String SUCCESS = "success";
     public static final String FAILURE = "failure";

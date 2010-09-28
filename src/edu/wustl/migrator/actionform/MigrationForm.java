@@ -1,6 +1,13 @@
 package edu.wustl.migrator.actionform;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts.action.ActionError;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+
+import edu.wustl.common.util.global.Validator;
 
 /**
  * This class contains migration information provided by the user on the
@@ -82,5 +89,31 @@ public class MigrationForm extends ActionForm
     public void setTargetIdp(final String targetIdp)
     {
         this.targetIdp = targetIdp;
+    }
+
+    @Override
+    public ActionErrors validate(final ActionMapping mapping, final HttpServletRequest request)
+    {
+        final ActionErrors errors = new ActionErrors();
+
+        final String doNotAskAgain = request
+                .getParameter(edu.wustl.wustlkey.util.global.Constants.DO_NOT_ASK_AGAIN);
+        if (!edu.wustl.wustlkey.util.global.Constants.TRUE.equals(doNotAskAgain))
+        {
+            if (Validator.isEmpty(migratedLoginName))
+            {
+                errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("errors.item.required", "Login Name"));
+            }
+            if (Validator.isEmpty(migratedPassword))
+            {
+                errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("errors.item.required", "Password"));
+            }
+
+            if (Validator.isEmpty(targetIdp))
+            {
+                errors.add(ActionErrors.GLOBAL_ERROR, new ActionError("errors.item.required", "Target Domain"));
+            }
+        }
+        return errors;
     }
 }

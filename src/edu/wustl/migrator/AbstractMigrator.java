@@ -1,10 +1,12 @@
 package edu.wustl.migrator;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import edu.wustl.abstractidp.IAbstractIDP;
 import edu.wustl.common.exception.ApplicationException;
+import edu.wustl.dao.query.generator.ColumnValueBean;
 import edu.wustl.domain.UserDetails;
+import edu.wustl.idp.IDPInterface;
 import edu.wustl.migrator.exception.MigratorException;
 import edu.wustl.migrator.util.Utility;
 
@@ -15,11 +17,11 @@ import edu.wustl.migrator.util.Utility;
  * @author niharika_sharma
  *
  */
-public abstract class AbstractMigrator implements IAbstractMigrator
+public abstract class AbstractMigrator implements MigratorInterface
 {
 
     /** The target domain. */
-    private final IAbstractIDP targetDomain;
+    private final IDPInterface targetDomain;
 
     /**
      * Instantiates a new abstract migrator.
@@ -27,7 +29,7 @@ public abstract class AbstractMigrator implements IAbstractMigrator
      * @param targetDomain
      *            the target domain
      */
-    public AbstractMigrator(final IAbstractIDP targetDomain)
+    public AbstractMigrator(final IDPInterface targetDomain)
     {
         this.targetDomain = targetDomain;
     }
@@ -41,45 +43,33 @@ public abstract class AbstractMigrator implements IAbstractMigrator
      */
     public void migrate(final UserDetails userDetails) throws MigratorException
     {
-        try
-        {
-            final String queryStr = "INSERT INTO CSM_MIGRATE_USER VALUES" + "('" + userDetails.getLoginName()
-                    + "','" + userDetails.getMigratedLoginName() + "','" + targetDomain.getName() + "','"
-                    + MigrationState.MIGRATED + "')";
-            Utility.executeQueryUsingDataSource(queryStr, true, "WUSTLKey");
-        }
-        catch (final ApplicationException appException)
-        {
-            throw new MigratorException(appException);
-        }
+        executeMigrationInsertQuery(userDetails, MigrationState.MIGRATED);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see edu.wustl.migrator.IAbstractMigrator#getCSMName(java.lang.String)
-     */
-    public String getCSMName(final String migratedLoginName) throws MigratorException
+    private void executeMigrationInsertQuery(final UserDetails userDetails, final MigrationState state)
+            throws MigratorException
     {
-        String csmName = null;
         try
         {
-            final String queryStr = "SELECT LOGIN_NAME FROM CSM_MIGRATE_USER WHERE MIGRATED_LOGIN_NAME = '"
-                    + migratedLoginName + "'";
+            final String queryStr = "INSERT INTO CSM_MIGRATE_USER(LOGIN_NAME,MIGRATED_LOGIN_NAME, TARGET_IDP_NAME, MIGRATION_STATUS) VALUES"
+                    + "(?,?,?,?)";
+            final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
+            final ColumnValueBean loginNameBean = new ColumnValueBean(userDetails.getLoginName());
+            final ColumnValueBean migratedLoginNameBean = new ColumnValueBean(userDetails.getMigratedLoginName());
+            final ColumnValueBean targetDomainNameBean = new ColumnValueBean(targetDomain.getName());
+            final ColumnValueBean migrationStatusBean = new ColumnValueBean(state.getState());
 
-            final List<List<String>> resultList = Utility.executeQueryUsingDataSource(queryStr, false, "WUSTLKey");
+            parameters.add(loginNameBean);
+            parameters.add(migratedLoginNameBean);
+            parameters.add(targetDomainNameBean);
+            parameters.add(migrationStatusBean);
 
-            if (resultList != null)
-            {
-                final List<String> wuKey = resultList.get(0);
-                csmName = wuKey.get(0).toString();
-            }
+            Utility.executeQueryUsingDataSource(queryStr, parameters, true, "WUSTLKey");
         }
         catch (final ApplicationException appException)
         {
             throw new MigratorException(appException);
         }
-        return csmName;
     }
 
     /*
@@ -91,9 +81,20 @@ public abstract class AbstractMigrator implements IAbstractMigrator
     {
         try
         {
-            final String queryStr = "INSERT INTO CSM_MIGRATE_USER VALUES" + "('" + loginName + "',null,'"
-                    + targetDomain.getName() + "','" + MigrationState.DO_NOT_MIGRATE + "')";
-            Utility.executeQueryUsingDataSource(queryStr, true, "WUSTLKey");
+            final String queryStr = "INSERT INTO CSM_MIGRATE_USER(LOGIN_NAME,MIGRATED_LOGIN_NAME, TARGET_IDP_NAME, MIGRATION_STATUS) VALUES"
+                    + "(?,?,?,?)";
+            final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
+            final ColumnValueBean loginNameBean = new ColumnValueBean(loginName);
+            final ColumnValueBean migratedLoginNameBean = new ColumnValueBean(null);
+            final ColumnValueBean targetDomainNameBean = new ColumnValueBean(targetDomain.getName());
+            final ColumnValueBean migrationStatusBean = new ColumnValueBean(MigrationState.DO_NOT_MIGRATE
+                    .getState());
+
+            parameters.add(loginNameBean);
+            parameters.add(migratedLoginNameBean);
+            parameters.add(targetDomainNameBean);
+            parameters.add(migrationStatusBean);
+            Utility.executeQueryUsingDataSource(queryStr, parameters, true, "WUSTLKey");
         }
         catch (final ApplicationException appException)
         {

@@ -1,6 +1,11 @@
 package edu.wustl.migrator;
 
-
+/**
+ * This enum defines the possible states of migration a user can be in.
+ *
+ * @author niharika_sharma
+ *
+ */
 public enum MigrationState
 {
 
@@ -11,13 +16,13 @@ public enum MigrationState
     /** State for Do not migrate user. */
     DO_NOT_MIGRATE("DO_NOT_MIGRATE"),
     /** State for New wustl user. */
-    NEW_WUSTL_USER("NEW_WUSTL_USER");
+    NEW_IDP_USER("NEW_IDP_USER");
 
     String state;
 
     MigrationState(final String state)
     {
-        this.state=state;
+        this.state = state;
     }
 
     public String getState()
@@ -27,11 +32,12 @@ public enum MigrationState
 
     public static MigrationState get(final String state)
     {
-        MigrationState migrationState=null;
-        for (final MigrationState optStatus : MigrationState.values()) {
-            if(optStatus.getState().equals(state))
+        MigrationState migrationState = null;
+        for (final MigrationState optStatus : MigrationState.values())
+        {
+            if (optStatus.getState().equals(state))
             {
-                migrationState=optStatus;
+                migrationState = optStatus;
                 break;
             }
         }
