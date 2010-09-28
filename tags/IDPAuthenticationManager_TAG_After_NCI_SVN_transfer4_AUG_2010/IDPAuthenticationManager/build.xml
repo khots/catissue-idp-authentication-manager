@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="IDPAuthenticationManager 0.0" default="dist" basedir=".">
+	<property name="src" value="src" />
+	<property name="build" value="bin" />
+	<property name="dist" value="dist" />
+	<property name="lib" value=".\lib" />
+
+	<target name="init" depends="clean">
+		<tstamp />
+		<mkdir dir="${build}" />
+	</target>
+
+	<target name="compile" depends="init">
+		<javac destdir="${build}" includes="**/*.*" includeAntRuntime="false" debug="yes" target="1.5">
+					<src path="${src}" />
+					<classpath>
+						<fileset dir="${lib}">
+							<include name="*.jar" />
+						</fileset>
+						<pathelement location="${ant.home}\lib\ant.jar" />
+					</classpath>
+				</javac>
+	</target>
+
+	<target name="dist" depends="compile">
+		<mkdir dir="${dist}" />
+		<jar jarfile="${dist}/IDPAuthenticationManager0_0.jar" basedir="${build}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${build}" />
+		<delete dir="${dist}" />
+	</target>
+
+</project>
