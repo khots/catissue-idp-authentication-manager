@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDPS>
+
+	<IDP name="CSM">
+		<class name="edu.wustl.authmanager.CSMAuthManager" />
+		<idpdetails>
+		<defaultidp>true</defaultidp>
+		<displayname>CIDERLDAP</displayname>
+		</idpdetails>
+		<idp-configuration>
+		</idp-configuration>
+        <user-attributes>
+		</user-attributes>
+		<migration-details>
+			<migrator>
+				<rule-class>edu.wustl.migration.rules.WustlKeyMigrationRule</rule-class>
+			    <migrator-class>edu.wustl.migrator.WUSTLKeyMigrator</migrator-class>
+			    <target-idp-name>WUSTLKEY_IDP</target-idp-name>
+			</migrator>
+			<migrator>
+				<rule-class>edu.wustl.migration.rules.BJCMigrationRule</rule-class>
+			    <migrator-class>edu.wustl.migrator.BJCMigrator</migrator-class>
+			    <target-idp-name>BJC_IDP</target-idp-name>
+			</migrator>
+		</migration-details>
+	</IDP>
+
+
+	<IDP name="WUSTLKEY_IDP">
+		<class name="edu.wustl.authmanager.LDAPAuthManager" />
+		<idpdetails>
+		<defaultidp>false</defaultidp>
+		<displayname>WUSTLKey</displayname>
+		</idpdetails>
+		<idp-configuration>
+			<initContextFactory>com.sun.jndi.ldap.LdapCtxFactory</initContextFactory>
+			<securityAuthetication>simple</securityAuthetication>
+			<securityProtocol></securityProtocol>
+			<directory>ldap://10.88.26.32:10389/</directory>
+			<searchbase>ou=users,ou=system</searchbase>
+			<searchfilter>CN=Users</searchfilter>
+			<stringToReplace>Users</stringToReplace>
+			<bindUser>uid=admin,ou=system</bindUser>
+			<bindPassword>secret</bindPassword>
+		</idp-configuration>
+		<user-attributes>
+			<firstName>givenname</firstName>
+			<lastName>sn</lastName>
+		</user-attributes>
+		<migration-details>
+		</migration-details>
+	</IDP>
+
+	<IDP name="BJC_IDP">
+		<class name="edu.wustl.authmanager.LDAPAuthManager" />
+		<idpdetails>
+		<defaultidp>false</defaultidp>
+		<displayname>Bjc LDAP</displayname>
+		</idpdetails>
+		<idp-configuration>
+			<initContextFactory>com.sun.jndi.ldap.LdapCtxFactory</initContextFactory>
+			<securityAuthetication>simple</securityAuthetication>
+			<securityProtocol></securityProtocol>
+			<directory>ldap://10.88.5.111:10389/</directory>
+			<searchbase>ou=users,ou=system</searchbase>
+			<searchfilter>CN=Users</searchfilter>
+			<stringToReplace>Users</stringToReplace>
+			<bindUser>uid=admin,ou=system</bindUser>
+			<bindPassword>secret</bindPassword>
+		</idp-configuration>
+		<user-attributes>
+			<firstName>givenname</firstName>
+			<lastName>sn</lastName>
+		</user-attributes>
+		<migration-details>
+		</migration-details>
+	</IDP>
+</IDPS>
