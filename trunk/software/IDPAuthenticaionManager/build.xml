@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+<project name="IDPAuthenticationManager 0.0" default="dist" >
+
+	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+		<classpath>
+			<pathelement location="./test/test-lib/ant-contrib.jar" />
+		</classpath>
+	</taskdef>
+
+	<property file="./IDPAuthManager.properties"/>
+	<property file="idpTestInstall.properties" />
+	<property name="base.dir" value="." />
+	<property name="software.dir" value=".."/>
+
+	<property name="src.dir" value="${base.dir}/src/java" />
+	<property name="build" value="bin" />
+	<property name="local-ivy-repo.dir" value="${software.dir}/local-ivy-repo"/>
+	<property name="lib.dir" value="${base.dir}/src/lib" />
+	<property name="test.lib.dir" value="${base.dir}/test/test-lib" />
+
+<!--	<property name="target.dir" value="${build}" />
+		<property name="build" value="bin" />
+-->
+
+	<property name="temp.src.classes.dir" value="${software.dir}/target/temp/src/classes"/>
+	<property name="temp.test.classes.dir" value="${software.dir}/target/temp/test/classes"/>
+
+	<property name="junit.jar" value="${test.lib}/junit-4.1.jar" />
+	<property name="cobertura.dir" value="${base.dir}/test/cobertura" />
+	<property name="report.dir" value="${software.dir}/target/reports" />
+
+	<property name="test.src.dir" value="${base.dir}/test/unit/java/" />
+	<property name="test.home.dir" value="${base.dir}/test/unit/java/" />
+
+<!--	<property name="test.class.dir" value="${build}/edu/wustl/migrator/" />
+-->
+	<property name="test.dir" value="${base.dir}/test/unit/java" />
+	<property name="junit.report.dir" value="${report.dir}/JUNIT" />
+
+	<property name="oracle.driver.string" value="oracle.jdbc.driver.OracleDriver" />
+	<property name="mysql.driver.string" value="com.mysql.jdbc.Driver" />
+	<property name="db2.driver.string" value="com.ibm.db2.jcc.DB2Driver" />
+	<property name="mysql.sql.dir" value="${base.dir}/db/db-install/mysql" />
+	<property name="oracle.sql.dir" value="${base.dir}/db/db-install/Oracle" />
+
+
+<!--	<loadfile property="dist.revision" srcFile="./.svn/entries">
+		<filterchain>
+			<headfilter lines="1" skip="4" />
+		</filterchain>
+	</loadfile>
+-->
+	<path id="app.classpath">
+		<fileset dir="${lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="app.test.classpath">
+		<fileset dir="${test.lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<path id="app.cobertura.classpath">
+		<fileset dir="${cobertura.dir}/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- Cobertura -->
+	<path id="cobertura.classpath">
+		<fileset dir="${cobertura.dir}">
+			<include name="cobertura.jar" />
+		</fileset>
+		<fileset dir="${cobertura.dir}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
+
+	<target name="init" depends="clean">
+		<tstamp />
+	<!--	<mkdir dir="${build}" /> -->
+
+		<mkdir dir="${temp.src.classes.dir}"/>
+		<mkdir dir="${temp.test.classes.dir}"/>
+	</target>
+
+	<target name="compile_junit_TestCases">
+		<javac destdir="${temp.test.classes.dir}" includes="**/**.java" includeAntRuntime="false" debug="yes" target="1.5">
+			<src path="${test.src.dir}" />
+			<classpath>
+				<pathelement location="${temp.src.classes.dir}" />
+				<fileset dir="${lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+				<fileset dir="${test.lib.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${temp.test.classes.dir}" overwrite="true">
+			<fileset dir="${test.home.dir}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.hbm.xml" />
+				<include name="**/*.ser" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="compile" depends="init">
+		<javac destdir="${temp.src.classes.dir}" includes="**/*.*" includeAntRuntime="false" debug="yes" target="1.5">
+			<src path="${src.dir}" />
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar" />
+				</fileset>
+				<pathelement location="${ant.home}\lib\ant.jar" />
+			</classpath>
+		</javac>
+		<copy todir="${temp.src.classes.dir}" overwrite="true">
+			<fileset dir="${test.src.dir}">
+				<include name="**/*.properties" />
+				<include name="**/*.xml" />
+				<include name="**/*.hbm.xml" />
+				<include name="**/*.ser" />
+			</fileset>
+			<fileset dir=".">
+				<include name="log4j.properties" />
+			</fileset>
+
+		</copy>
+	</target>
+
+	<target name="dist" depends="compile">
+		<mkdir dir="${local-ivy-repo.dir}" />
+		<jar jarfile="${local-ivy-repo.dir}/IDPAuthenticationManager0_0.jar" >
+			<fileset dir="${temp.src.classes.dir}" includes="**/*" >
+				<exclude name="**/*.properties" />
+				<exclude name="**/*.xml" />
+				<exclude name="**/*.hbm.xml" />
+				<exclude name="**/*.ser" />
+			</fileset>
+			<manifest>
+				<section name="${idp.jar.details}">
+					<attribute name="Version" value="${idp.jar.version}" />
+					<attribute name="Built-By" value="${idp.jar.creator}" />
+					<attribute name="Built-At-Time" value="${TODAY} ${TSTAMP}" />
+					<attribute name="SVN-URL" value="${dist.revision}" />
+				</section>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="clean">
+		<delete dir="${temp.src.classes.dir}" />
+		<delete dir="${temp.test.classes.dir}" />
+		<delete dir="${local-ivy-repo.dir}" />
+	</target>
+
+	<path id="junit.classpath">
+		<pathelement location="${junit.jar}" />
+		<pathelement location="${temp.dir}" />
+		<path refid="app.classpath" />
+		<path refid="app.test.classpath" />
+	</path>
+
+
+
+	<target name="generate_codecoverage_report">
+		<ant target="compile_test_cases" />
+		<ant target="test" />
+		<ant antfile="cobertura.xml" target="coverage.report" />
+		<ant antfile="cobertura.xml" target="coverage.check" />
+	</target>
+
+	<!--
+	<target name="instrument">
+	<echo message="${toString:cobertura.classpath}" />
+
+
+			<delete dir="./test/cobertura/instrumented" />
+			<delete file="./test/cobertura/coverage.ser" />
+			<mkdir dir="./test/cobertura/instrumented" />
+
+			<cobertura-instrument datafile="./test/cobertura/coverage.ser" todir="./test/cobertura/instrumented">
+
+
+				<ignore regex="org.apache.log4j.*" />
+
+				<fileset dir="../target/temp">
+					<exclude name="**/*Test*.class" />
+					<exclude name="**/*Constants.class" />
+					<exclude name="edu/wustl/auth/exception/*.class" />
+					<exclude name="edu/wustl/processor/*.class" />
+					<exclude name="edu/wustl/migrator/*.class" />
+					<exclude name="edu/wustl/migrator/actionform/*.class" />
+					<exclude name="edu/wustl/migrator/action/*.class" />
+					<exclude name="edu/wustl/migrator/exception/*.class" />
+					<exclude name="edu/wustl/idp/*.class" />
+				</fileset>
+			</cobertura-instrument>
+	</target>
+	-->
+
+	<target name="test" depends="compile_test_cases,deploy_db">
+		<ant antfile="cobertura.xml" target="instrument" />
+
+		<delete dir="${junit.report.dir}" />
+		<mkdir dir="${junit.report.dir}" />
+
+		<junit printsummary="yes" haltonerror="no" haltonfailure="no" fork="yes">
+
+			<sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.dir}/coverage.ser" />
+
+
+			<!--formatter type="plain" usefile="false"/-->
+			<formatter type="xml" />
+			<batchtest todir="${junit.report.dir}">
+				<fileset dir="${test.dir}">
+					<include name="**/TestAll.java" />
+				</fileset>
+			</batchtest>
+
+			<classpath>
+				<!--	<pathelement location="${junit.classes.dir}"/> -->
+				<pathelement location="${cobertura.dir}/instrumented/" />
+				<pathelement location="${temp.src.classes.dir}" />
+				<pathelement location="${temp.test.classes.dir}" />
+			</classpath>
+			<classpath refid="cobertura.classpath" />
+			<classpath refid="junit.classpath" />
+		</junit>
+
+		<junitreport todir="${junit.report.dir}">
+			<fileset dir="${junit.report.dir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report todir="${junit.report.dir}" />
+		</junitreport>
+
+		<!--delete>
+				<fileset dir="${junit.report.dir}">
+					<include name="**/**/*.xml" />
+				</fileset>
+			</delete-->
+	</target>
+
+	<target name="compile_test_cases" depends="compile">
+		<antcall target="compile_junit_TestCases" />
+	</target>
+
+
+	<!-- =================================================================== -->
+	<!-- Cobertura code coverage report                                      -->
+	<!-- =================================================================== -->
+
+	<taskdef classpathref="junit.classpath" resource="tasks.properties" />
+
+	<target name="gen_report_cobertura">
+		<antcall target="clean" />
+		<antcall target="compile" />
+		<antcall target="instrument" />
+		<antcall target="run_junit_testcases" />
+
+		<cobertura-report datafile="${cobertura.dir}/coverage.ser" srcdir="${src.dir}" destdir="${junit.report.dir}/coverage" />
+
+		<delete file="${cobertura.dir}/coverage.ser" />
+	</target>
+
+	<target name="deploy_db" description="Target for Database Creation">
+		<if>
+		<equals arg1="true" arg2="${install.db}"/>
+		<then>
+				<if>
+					<equals arg1="mysql" arg2="${database.type}" />
+					<then>
+						<antcall target="deploy_db_mysql" />
+					</then>
+					<elseif>
+						<equals arg1="oracle" arg2="${database.type}" />
+						<then>
+							<antcall target="deploy_db_oracle" />
+						</then>
+					</elseif>
+					<!-- mssqlserver db -->
+					<elseif>
+						<equals arg1="mssqlserver" arg2="${database.type}" />
+						<then>
+							<antcall target="deploy_db_mssqlserver" />
+						</then>
+					</elseif>
+					<else>
+						<echo message="DATABASE INITIALIZATION FAILED PLEASE CHECK DATABASE.TYPE PROPERTY" level="error" />
+					</else>
+				</if>
+
+		</then>
+		</if>
+
+
+	</target>
+
+	<!--MySQL Database Creation -->
+	<target name="deploy_db_mysql" description="MySQL Database Creation">
+		<echo message="Initializing MySQL Database for IDPAuthenticationManager JUnits................jdbc:mysql://${database.host}:${database.port}/${database.name}...." />
+		<sql driver="${mysql.driver.string}" url="jdbc:mysql://${database.host}:${database.port}/${database.name}" userid="${database.user}" password="${database.password}">
+			<transaction src="${mysql.sql.dir}/csm_catissuecore.sql" />
+			<transaction>commit;</transaction>
+			<classpath>
+				<fileset dir="${lib.dir}">
+					<include name="*.jar" />
+				</fileset>
+				<fileset dir="${test.lib.dir}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</sql>
+	</target>
+
+</project>
