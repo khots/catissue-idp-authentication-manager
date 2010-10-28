@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE project>
-<project name="IDPAuthenticationManager 0.0" default="dist" >
+<project name="IDPAuthenticationManager 0.0" default="dist" xmlns:ivy="antlib:org.apache.ivy.ant">
 
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
@@ -12,6 +12,7 @@
 	<property file="idpTestInstall.properties" />
 	<property name="base.dir" value="." />
 	<property name="software.dir" value=".."/>
+
 
 	<property name="src.dir" value="${base.dir}/src/java" />
 	<property name="build" value="bin" />
@@ -45,12 +46,12 @@
 	<property name="oracle.sql.dir" value="${base.dir}/db/db-install/Oracle" />
 
 
-<!--	<loadfile property="dist.revision" srcFile="./.svn/entries">
+	<loadfile property="dist.revision" srcFile="./.svn/entries">
 		<filterchain>
 			<headfilter lines="1" skip="4" />
 		</filterchain>
 	</loadfile>
--->
+
 	<path id="app.classpath">
 		<fileset dir="${lib.dir}">
 			<include name="*.jar" />
@@ -81,10 +82,38 @@
 
 	<taskdef classpathref="cobertura.classpath" resource="tasks.properties" />
 
+
+	<condition property="local.cbiit-ivy-repo.dir" value="">
+		<or>
+		<os family="unix" />
+			<os family="mac" />
+		</or>
+	</condition>
+
+	<condition property="local.cbiit-ivy-repo.dir" value="c:/">
+		<os family="windows" />
+	</condition>
+
+
+
+
+	<property name="local-ivy-repo.dir" value="${software.dir}/local-ivy-repo"/>
+
+
+	<path id="bda-utils.classpath">
+		<fileset dir="${bda-utils.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<path id="ivy.classpath">
+		<fileset dir="${software.dir}/target/lib">
+			<include name="ivy-2.0.0.jar" />
+		</fileset>
+	</path>
+
+
 	<target name="init" depends="clean">
 		<tstamp />
-	<!--	<mkdir dir="${build}" /> -->
-
 		<mkdir dir="${temp.src.classes.dir}"/>
 		<mkdir dir="${temp.test.classes.dir}"/>
 	</target>
@@ -112,7 +141,7 @@
 		</copy>
 	</target>
 
-	<target name="compile" depends="init">
+	<target name="compile" depends="init,retrieve-ivy-files">
 		<javac destdir="${temp.src.classes.dir}" includes="**/*.*" includeAntRuntime="false" debug="yes" target="1.5">
 			<src path="${src.dir}" />
 			<classpath>
@@ -321,5 +350,43 @@
 			</classpath>
 		</sql>
 	</target>
+	<!--ivy:retrieve related tags start here-->
+		<property name="common.dir" location="${software.dir}/common" />
+		<property name="target.dir" location="${software.dir}/target" />
+
+
+		<property name="bda-utils.dir" location="${target.dir}/bda-utils" />
+			<property name="project.properties.file" value="${software.dir}/build/project.properties" />
+			<property file="${project.properties.file}" />
+			<import file="${bda-utils.dir}/bda-build-utils-${bda.version}.xml" />
+
+
+			<path id="bda-utils.classpath">
+				<fileset dir="${bda-utils.dir}">
+					<include name="**/*.jar" />
+				</fileset>
+			</path>
+			<path id="ivy.classpath">
+				<fileset dir="${target.dir}/lib">
+					<include name="ivy-2.0.0.jar" />
+				</fileset>
+			</path>
+
+			<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.classpath" />
+			<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"  classpathref="bda-utils.classpath"/>
+			<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="bda-utils.classpath"/>
+
+		<property name="ivy.settings.file" location="${common.dir}/ivy/cbiit-ivy-settings.xml" />
+				<target name="ivy-settings">
+					<property name="ivy.dep.file" value="${common.dir}/bda-download/ivy-bda.xml"/>
+					<ivy:settings file="${ivy.settings.file}"/>
+				</target>
+			<target name="retrieve-ivy-files" depends="ivy-settings"  description="Updates the local ivy repository">
+				<ivy:resolve refresh="true" conf="app_lib"/>
+				<ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].[ext]" conf="app_lib" />
+
+			</target>
+
+		<!--ivy:retrieve related tags end here-->
 
 </project>
