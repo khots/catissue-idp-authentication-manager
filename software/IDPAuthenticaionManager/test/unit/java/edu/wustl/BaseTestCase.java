@@ -68,7 +68,7 @@ public class BaseTestCase extends TestCase
 
         try
         {
-            XMLPropertyHandler.init("../IDPAuthenticaionManager/caTissueCore_Properties.xml");
+            XMLPropertyHandler.init("../IDPAuthenticaionManager/src/conf/caTissueCore_Properties.xml");
         }
         catch (final ParseException e)
         {
@@ -87,8 +87,8 @@ public class BaseTestCase extends TestCase
         super.setUp();
 
         System.setProperty("gov.nih.nci.security.configFile",
-        "../ApplicationSecurityConfig.xml");
-        System.setProperty("app.domainAuthFilePath", "../IDPAuthenticaionManager/IDPAuthentication.xml");
+        "../src/conf/ApplicationSecurityConfig.xml");
+        System.setProperty("app.domainAuthFilePath", "../IDPAuthenticaionManager/src/conf/IDPAuthentication.xml");
 
 
 
@@ -131,7 +131,7 @@ public class BaseTestCase extends TestCase
     private static DataSource getDataSource() throws FileNotFoundException, IOException
     {
         final Properties props = new Properties();
-        final java.io.File f = new java.io.File("../IDPAuthenticaionManager/idpTestInstall.properties");
+        final java.io.File f = new java.io.File("../IDPAuthenticaionManager/src/conf/idpTestInstall.properties");
         System.out.println("*****************"+f.getAbsolutePath());
         props.load(new FileInputStream(f));
         dbType = props.getProperty("database.type");

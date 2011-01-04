@@ -8,8 +8,8 @@
 		</classpath>
 	</taskdef>
 
-	<property file="./IDPAuthManager.properties"/>
-	<property file="idpTestInstall.properties" />
+	<property file="./src/conf/IDPAuthManager.properties"/>
+	<property file="./src/conf/idpTestInstall.properties" />
 	<property name="base.dir" value="." />
 	<property name="software.dir" value=".."/>
 
@@ -19,11 +19,6 @@
 	<property name="local-ivy-repo.dir" value="${software.dir}/local-ivy-repo"/>
 	<property name="lib.dir" value="${base.dir}/src/lib" />
 	<property name="test.lib.dir" value="${base.dir}/test/test-lib" />
-
-<!--	<property name="target.dir" value="${build}" />
-		<property name="build" value="bin" />
--->
-
 	<property name="temp.src.classes.dir" value="${software.dir}/target/temp/src/classes"/>
 	<property name="temp.test.classes.dir" value="${software.dir}/target/temp/test/classes"/>
 
@@ -33,9 +28,6 @@
 
 	<property name="test.src.dir" value="${base.dir}/test/unit/java/" />
 	<property name="test.home.dir" value="${base.dir}/test/unit/java/" />
-
-<!--	<property name="test.class.dir" value="${build}/edu/wustl/migrator/" />
--->
 	<property name="test.dir" value="${base.dir}/test/unit/java" />
 	<property name="junit.report.dir" value="${report.dir}/JUNIT" />
 
@@ -93,12 +85,6 @@
 	<condition property="local.cbiit-ivy-repo.dir" value="c:/">
 		<os family="windows" />
 	</condition>
-
-
-
-
-	<property name="local-ivy-repo.dir" value="${software.dir}/local-ivy-repo"/>
-
 
 	<path id="bda-utils.classpath">
 		<fileset dir="${bda-utils.dir}">
@@ -166,7 +152,7 @@
 	</target>
 
 	<target name="dist" depends="compile">
-		<mkdir dir="${local-ivy-repo.dir}" />
+
 		<jar jarfile="${local-ivy-repo.dir}/IDPAuthenticationManager0_0.jar" >
 			<fileset dir="${temp.src.classes.dir}" includes="**/*" >
 				<exclude name="**/*.properties" />
@@ -188,7 +174,6 @@
 	<target name="clean">
 		<delete dir="${temp.src.classes.dir}" />
 		<delete dir="${temp.test.classes.dir}" />
-		<delete dir="${local-ivy-repo.dir}" />
 	</target>
 
 	<path id="junit.classpath">
@@ -203,8 +188,8 @@
 	<target name="generate_codecoverage_report">
 		<ant target="compile_test_cases" />
 		<ant target="test" />
-		<ant antfile="cobertura.xml" target="coverage.report" />
-		<ant antfile="cobertura.xml" target="coverage.check" />
+		<ant antfile="${base.dir}/src/conf/cobertura.xml" target="coverage.report" />
+		<ant antfile="${base.dir}/src/conf/cobertura.xml" target="coverage.check" />
 	</target>
 
 	<!--
@@ -237,7 +222,7 @@
 	-->
 
 	<target name="test" depends="compile_test_cases,deploy_db">
-		<ant antfile="cobertura.xml" target="instrument" />
+		<ant antfile="${base.dir}/src/conf/cobertura.xml" target="instrument" />
 
 		<delete dir="${junit.report.dir}" />
 		<mkdir dir="${junit.report.dir}" />
