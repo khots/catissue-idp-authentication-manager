@@ -22,6 +22,7 @@ import edu.wustl.migrator.actionform.MigrationForm;
 import edu.wustl.migrator.exception.MigratorException;
 import edu.wustl.migrator.util.Utility;
 import edu.wustl.wustlkey.util.global.Constants;
+import edu.wustl.dao.exception.DAOException;
 
 /**
  * This class performs the migration of a user from one domain to the other, by
@@ -47,7 +48,7 @@ public class MigrateUserAction extends AbstractMigrationAction
      */
     @Override
     public ActionForward execute(final ActionMapping mapping, final ActionForm form,
-            final HttpServletRequest request, final HttpServletResponse response) throws MigratorException
+            final HttpServletRequest request, final HttpServletResponse response) throws MigratorException, DAOException
     {
         String forwardTo = Constants.FAILURE;
         final MigrationForm migrationForm = (MigrationForm) form;
@@ -97,6 +98,14 @@ public class MigrateUserAction extends AbstractMigrationAction
                 forwardTo = Constants.FAILURE;
             }
         }
+        // ------Niranjan's changes start here
+        // @ Bugid 19485:
+        catch (final DAOException e)
+        {
+            LOGGER.info("Exception: " + e.getMessage(), e);
+            handleError(request, "errors.LoginIDNotAvailable");
+        }
+        //-------Niranjan's changes end here
         catch (final Exception e)
         {
             LOGGER.info("Exception: " + e.getMessage(), e);
