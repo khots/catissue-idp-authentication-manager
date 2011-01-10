@@ -9,6 +9,7 @@ import edu.wustl.domain.UserDetails;
 import edu.wustl.idp.IDPInterface;
 import edu.wustl.migrator.exception.MigratorException;
 import edu.wustl.migrator.util.Utility;
+import edu.wustl.dao.exception.DAOException;
 
 /**
  * Abstract class providing basic implementation of some of the methods of the
@@ -41,13 +42,13 @@ public abstract class AbstractMigrator implements MigratorInterface
      * edu.wustl.migrator.IAbstractMigrator#migrate(edu.wustl.domain.UserDetails
      * )
      */
-    public void migrate(final UserDetails userDetails) throws MigratorException
+    public void migrate(final UserDetails userDetails) throws MigratorException, DAOException
     {
         executeMigrationInsertQuery(userDetails, MigrationState.MIGRATED);
     }
 
     private void executeMigrationInsertQuery(final UserDetails userDetails, final MigrationState state)
-            throws MigratorException
+            throws MigratorException, DAOException
     {
         try
         {
@@ -66,6 +67,12 @@ public abstract class AbstractMigrator implements MigratorInterface
 
             Utility.executeQueryUsingDataSource(queryStr, parameters, true, "WUSTLKey");
         }
+        // ------Niranjan's changes start here @Bugid 19485
+        catch(final DAOException d)
+        {
+        	throw d;
+        }
+      //-------Niranjan's changes end here
         catch (final ApplicationException appException)
         {
             throw new MigratorException(appException);

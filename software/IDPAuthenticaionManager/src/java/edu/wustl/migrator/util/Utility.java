@@ -89,7 +89,9 @@ public class Utility
         {
             LOGGER.debug(ex.getMessage(), ex);
             jdbcDAO.rollback();
-            throw new ApplicationException(ex.getErrorKey(), ex, ex.getMessage());
+            // @Bugid 19485
+            //throw new ApplicationException(ex.getErrorKey(), ex, ex.getMessage());
+            throw ex;
         }
         catch (final Throwable throwable)
         {
@@ -191,7 +193,7 @@ public class Utility
      * @param userDetails
      * @throws MigratorException
      */
-    public static void migrateUser(final UserDetails userDetails) throws MigratorException
+    public static void migrateUser(final UserDetails userDetails) throws MigratorException, DAOException
     {
         try
         {
