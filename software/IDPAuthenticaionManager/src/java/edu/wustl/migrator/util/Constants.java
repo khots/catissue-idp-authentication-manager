@@ -29,4 +29,8 @@ public class Constants
     public static final String RULE_CLASS_TAG_NAME = "rule-class";
     public static final String TARGET_IDP_TAG_NAME = "target-idp-name";
     public static final String IDP_DISPLAY_NAME_TAG_NAME = "displayname";
+
+    public static final String DORIAN_SERVICE_URL="DorianServiceURL";
+    public static final String AUTH_SERVICE_URL="AuthenticationServiceURL";
+    public static final String SYNC_DESC_FILE="SyncDescFilePath";
 }
