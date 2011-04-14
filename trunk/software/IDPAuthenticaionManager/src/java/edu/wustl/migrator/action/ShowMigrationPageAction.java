@@ -63,7 +63,7 @@ public class ShowMigrationPageAction extends AbstractMigrationAction
                             .getProperty(edu.wustl.migrator.util.Constants.IDP_DISPLAY_NAME_TAG_NAME));
                     idpDetails.setValue(targetIdpName);
                     migrationIdps.add(idpDetails);
-                    break;
+//                    break;
                 }
             }
 
