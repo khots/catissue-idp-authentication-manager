@@ -262,7 +262,7 @@ public class LoginProcessor
      * @return the user details
      * @throws AuthenticationException
      */
-    private static UserDetails getUserDetails(final String loginName) throws AuthenticationException
+    public static UserDetails getUserDetails(final String loginName) throws AuthenticationException
     {
         UserDetails userDetails = null;
         try
