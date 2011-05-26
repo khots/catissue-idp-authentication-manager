@@ -6,7 +6,7 @@ public class UserDetails
 {
     private String loginName;
 
-    private String migratedLoginName;
+    private String wustlKey;
 
     private MigrationState migrationState;
 
@@ -24,12 +24,12 @@ public class UserDetails
 
     public String getMigratedLoginName()
     {
-        return migratedLoginName;
+        return wustlKey;
     }
 
     public void setMigratedLoginName(final String migratedLoginName)
     {
-        this.migratedLoginName = migratedLoginName;
+        wustlKey = migratedLoginName;
     }
 
     public MigrationState getMigrationState()

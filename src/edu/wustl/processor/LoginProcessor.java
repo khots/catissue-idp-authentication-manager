@@ -18,6 +18,7 @@ import edu.wustl.idp.IDPInterface;
 import edu.wustl.migration.rules.RuleInterface;
 import edu.wustl.migrator.MigrationState;
 import edu.wustl.migrator.util.Utility;
+import edu.wustl.wustlkey.util.global.Constants;
 
 /**
  * This class contains the generic workflows in an application supporting single
@@ -70,7 +71,7 @@ public class LoginProcessor
                 if (MigrationState.MIGRATED.equals(userDetails.getMigrationState()))
                 {
                     authManager = AuthManagerFactory.getInstance().getAuthManagerInstance(
-                            userDetails.getTargetIDP());
+                            Constants.WUSTL_IDP);
                 }
                 else
                 {
@@ -156,11 +157,16 @@ public class LoginProcessor
                 }
                 loginResult.setAuthenticationSuccess(true);
             }
-            else
+            else if (!loginCredentials.getLoginName().contains("@"))
             {
                 // New user
                 loginResult.setMigrationState(MigrationState.NEW_IDP_USER);
-                loginResult.setAuthenticationSuccess(false);
+                loginResult.setAuthenticationSuccess(true);
+            }
+            else
+            {
+            	loginResult.setMigrationState(MigrationState.DO_NOT_MIGRATE);
+            	loginResult.setAuthenticationSuccess(false);
             }
         }
         catch (final ApplicationException e)
@@ -238,18 +244,16 @@ public class LoginProcessor
             final UserDetails userDetails) throws AuthenticationException
     {
         final LoginResult loginResult = new LoginResult();
-        if (MigrationState.MIGRATED.equals(userDetails.getMigrationState()))
-        {
-            loginResult.setMigrationState(MigrationState.MIGRATED);
-            loginResult.setAppLoginName(userDetails.getLoginName());
-            loginResult.setMigratedLoginName(userDetails.getMigratedLoginName());
-        }
-        else
-        {
-            loginResult.setAppLoginName(userDetails.getLoginName());
-            loginResult.setMigrationState(userDetails.getMigrationState());
-        }
-        loginResult.setAuthenticationSuccess(true);
+
+         loginResult.setAppLoginName(userDetails.getLoginName());
+         loginResult.setMigratedLoginName(userDetails.getMigratedLoginName());
+         loginResult.setAuthenticationSuccess(true);
+         loginResult.setMigrationState(userDetails.getMigrationState());
+         if(userDetails.getMigrationState().equals(MigrationState.MIGRATED) && !loginCredentials.getLoginName().equals(userDetails.getMigratedLoginName()))
+         {
+        	 // user is migrated but has used his application id to login
+        	 loginResult.setAuthenticationSuccess(false);
+         }
         return loginResult;
     }
 
@@ -270,7 +274,7 @@ public class LoginProcessor
         	final IDPInterface sourceIdp = AuthManagerFactory.getInstance().getAuthManagerInstance().getIDP();
             if (sourceIdp.isMigrationEnabled())
             {
-                final String queryStr = "SELECT LOGIN_NAME, TARGET_IDP_NAME, MIGRATED_LOGIN_NAME,MIGRATION_STATUS FROM CSM_MIGRATE_USER WHERE MIGRATED_LOGIN_NAME = ? or LOGIN_NAME=?";
+                final String queryStr = "SELECT LOGIN_NAME,WUSTLKEY FROM CSM_MIGRATE_USER WHERE WUSTLKEY = ? or LOGIN_NAME=?";
 
                 final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
                 final ColumnValueBean loginNameBean = new ColumnValueBean(loginName);
@@ -285,10 +289,19 @@ public class LoginProcessor
                 {
                     userDetails = new UserDetails();
                     final List<String> userDetailsRecord = resultList.get(0);
-                    userDetails.setLoginName(userDetailsRecord.get(0).toString());
-                    userDetails.setTargetIDP(userDetailsRecord.get(1).toString());
-                    userDetails.setMigratedLoginName(userDetailsRecord.get(2).toString());
-                    userDetails.setMigrationState(MigrationState.get(userDetailsRecord.get(3).toString()));
+                    userDetails.setLoginName(userDetailsRecord.get(0));
+                    String migratedLoginName =userDetailsRecord.get(1);
+					userDetails.setMigratedLoginName(migratedLoginName);
+
+                    if(migratedLoginName==null || "".equals(migratedLoginName))
+                    {
+                    	userDetails.setMigrationState(MigrationState.DO_NOT_MIGRATE);
+                    }
+                    else
+                    {
+                    	userDetails.setMigrationState(MigrationState.MIGRATED);
+                    }
+
                 }
             }
         }
