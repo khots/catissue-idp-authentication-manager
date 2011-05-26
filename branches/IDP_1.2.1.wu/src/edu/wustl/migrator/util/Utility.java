@@ -211,7 +211,7 @@ public class Utility
                 if (rule.checkMigrationRules(baseIdpCredentials))
                 {
                     final IDPAuthManager targetAuthManager = AuthManagerFactory.getInstance()
-                            .getAuthManagerInstance(userDetails.getTargetIDP());
+                            .getAuthManagerInstance(Constants.WUSTL_IDP);
                     final MigratorInterface migrator = Utility.getMigratorInstance(migratorClassName,
                             targetAuthManager.getIDP());
                     migrator.migrate(userDetails);
@@ -247,7 +247,7 @@ public class Utility
                 final String targetIdpName = (String) properties
                         .get(edu.wustl.migrator.util.Constants.TARGET_IDP_TAG_NAME);
 
-                if (targetIdpName.equals(userDetails.getTargetIDP()))
+                if (targetIdpName.equals(Constants.CSM))
                 {
                     final String ruleClassName = (String) properties
                             .get(edu.wustl.migrator.util.Constants.RULE_CLASS_TAG_NAME);
