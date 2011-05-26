@@ -48,8 +48,6 @@ public class Constants
     public static final String APPLICATION_NAME = "WUSTLKey";
     public static final String WEB_INF = "WEB-INF";
 
-    public static final String WUSTL_IDP="WUSTLKEY_IDP";
-
     public static final String NO_MIGRATION_RECORD = "NO_MIGRATION_RECORD";
 
 }

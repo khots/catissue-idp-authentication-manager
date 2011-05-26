@@ -18,7 +18,6 @@ import edu.wustl.idp.IDPInterface;
 import edu.wustl.migration.rules.RuleInterface;
 import edu.wustl.migrator.MigrationState;
 import edu.wustl.migrator.util.Utility;
-import edu.wustl.wustlkey.util.global.Constants;
 
 /**
  * This class contains the generic workflows in an application supporting single
@@ -63,7 +62,6 @@ public class LoginProcessor
             {
                 if (isUserPresentInApplicationDB(loginCredentials))
                 {
-                	System.out.println("Normal user");
                     authManager = AuthManagerFactory.getInstance().getAuthManagerInstance();
                 }
             }
@@ -71,13 +69,11 @@ public class LoginProcessor
             {
                 if (MigrationState.MIGRATED.equals(userDetails.getMigrationState()))
                 {
-                	System.out.println("Migrated user");
                     authManager = AuthManagerFactory.getInstance().getAuthManagerInstance(
-                            Constants.WUSTL_IDP);
+                            userDetails.getTargetIDP());
                 }
                 else
                 {
-                	System.out.println("do not Migrate user");
                     authManager = AuthManagerFactory.getInstance().getAuthManagerInstance();
                 }
             }
@@ -242,9 +238,17 @@ public class LoginProcessor
             final UserDetails userDetails) throws AuthenticationException
     {
         final LoginResult loginResult = new LoginResult();
-         loginResult.setAppLoginName(userDetails.getLoginName());
-         loginResult.setMigratedLoginName(userDetails.getMigratedLoginName());
-
+        if (MigrationState.MIGRATED.equals(userDetails.getMigrationState()))
+        {
+            loginResult.setMigrationState(MigrationState.MIGRATED);
+            loginResult.setAppLoginName(userDetails.getLoginName());
+            loginResult.setMigratedLoginName(userDetails.getMigratedLoginName());
+        }
+        else
+        {
+            loginResult.setAppLoginName(userDetails.getLoginName());
+            loginResult.setMigrationState(userDetails.getMigrationState());
+        }
         loginResult.setAuthenticationSuccess(true);
         return loginResult;
     }
@@ -266,7 +270,7 @@ public class LoginProcessor
         	final IDPInterface sourceIdp = AuthManagerFactory.getInstance().getAuthManagerInstance().getIDP();
             if (sourceIdp.isMigrationEnabled())
             {
-                final String queryStr = "SELECT LOGIN_NAME,WUSTLKEY FROM CSM_MIGRATE_USER WHERE WUSTLKEY = ? or LOGIN_NAME=?";
+                final String queryStr = "SELECT LOGIN_NAME, TARGET_IDP_NAME, MIGRATED_LOGIN_NAME,MIGRATION_STATUS FROM CSM_MIGRATE_USER WHERE MIGRATED_LOGIN_NAME = ? or LOGIN_NAME=?";
 
                 final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
                 final ColumnValueBean loginNameBean = new ColumnValueBean(loginName);
@@ -281,19 +285,10 @@ public class LoginProcessor
                 {
                     userDetails = new UserDetails();
                     final List<String> userDetailsRecord = resultList.get(0);
-                    userDetails.setLoginName(userDetailsRecord.get(0));
-                    String migratedLoginName =userDetailsRecord.get(1);
-					userDetails.setMigratedLoginName(migratedLoginName);
-					System.out.println("Migrated login name == "+migratedLoginName+" completed");
-                    if(migratedLoginName==null || "".equals(migratedLoginName))
-                    {
-                    	userDetails.setMigrationState(MigrationState.DO_NOT_MIGRATE);
-                    }
-                    else
-                    {
-                    	userDetails.setMigrationState(MigrationState.MIGRATED);
-                    }
-
+                    userDetails.setLoginName(userDetailsRecord.get(0).toString());
+                    userDetails.setTargetIDP(userDetailsRecord.get(1).toString());
+                    userDetails.setMigratedLoginName(userDetailsRecord.get(2).toString());
+                    userDetails.setMigrationState(MigrationState.get(userDetailsRecord.get(3).toString()));
                 }
             }
         }

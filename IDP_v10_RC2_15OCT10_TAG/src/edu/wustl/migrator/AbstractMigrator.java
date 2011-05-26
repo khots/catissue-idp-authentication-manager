@@ -51,14 +51,18 @@ public abstract class AbstractMigrator implements MigratorInterface
     {
         try
         {
-            final String queryStr = "INSERT INTO CSM_MIGRATE_USER(LOGIN_NAME,WUSTLKEY) VALUES"
-                    + "(?,?)";
+            final String queryStr = "INSERT INTO CSM_MIGRATE_USER(LOGIN_NAME,MIGRATED_LOGIN_NAME, TARGET_IDP_NAME, MIGRATION_STATUS) VALUES"
+                    + "(?,?,?,?)";
             final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
             final ColumnValueBean loginNameBean = new ColumnValueBean(userDetails.getLoginName());
             final ColumnValueBean migratedLoginNameBean = new ColumnValueBean(userDetails.getMigratedLoginName());
+            final ColumnValueBean targetDomainNameBean = new ColumnValueBean(targetDomain.getName());
+            final ColumnValueBean migrationStatusBean = new ColumnValueBean(state.getState());
 
             parameters.add(loginNameBean);
             parameters.add(migratedLoginNameBean);
+            parameters.add(targetDomainNameBean);
+            parameters.add(migrationStatusBean);
 
             Utility.executeQueryUsingDataSource(queryStr, parameters, true, "WUSTLKey");
         }
@@ -77,14 +81,19 @@ public abstract class AbstractMigrator implements MigratorInterface
     {
         try
         {
-            final String queryStr = "INSERT INTO CSM_MIGRATE_USER(LOGIN_NAME,WUSTLKEY) VALUES"
-                    + "(?,?)";
+            final String queryStr = "INSERT INTO CSM_MIGRATE_USER(LOGIN_NAME,MIGRATED_LOGIN_NAME, TARGET_IDP_NAME, MIGRATION_STATUS) VALUES"
+                    + "(?,?,?,?)";
             final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
             final ColumnValueBean loginNameBean = new ColumnValueBean(loginName);
             final ColumnValueBean migratedLoginNameBean = new ColumnValueBean(null);
+            final ColumnValueBean targetDomainNameBean = new ColumnValueBean(targetDomain.getName());
+            final ColumnValueBean migrationStatusBean = new ColumnValueBean(MigrationState.DO_NOT_MIGRATE
+                    .getState());
 
             parameters.add(loginNameBean);
             parameters.add(migratedLoginNameBean);
+            parameters.add(targetDomainNameBean);
+            parameters.add(migrationStatusBean);
             Utility.executeQueryUsingDataSource(queryStr, parameters, true, "WUSTLKey");
         }
         catch (final ApplicationException appException)

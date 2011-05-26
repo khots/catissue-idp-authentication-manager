@@ -24,7 +24,8 @@ public class TestWUSTLKeyMigrator extends BaseTestCase
             final UserDetails userDetails=new UserDetails();
             userDetails.setLoginName("user10@wustl.edu");
             userDetails.setMigratedLoginName("TestUser-10");
-            //userDetails.setMigrationState(MigrationState.MIGRATED);
+            userDetails.setMigrationState(MigrationState.MIGRATED);
+            userDetails.setTargetIDP(targetAuthManager.getIDP().getName());
             migrator.migrate(userDetails);
         }
         catch (final AuthenticationException authenticationException)

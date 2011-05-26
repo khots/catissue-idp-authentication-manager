@@ -60,9 +60,8 @@ public class MigrateUserAction extends AbstractMigrationAction
             final LoginCredentials loginCredentials = new LoginCredentials();
             loginCredentials.setLoginName(migrationForm.getMigratedLoginName());
             loginCredentials.setPassword(migrationForm.getMigratedPassword());
-            System.out.println("Target IDP: "+migrationForm.getTargetIdp());
+
             final boolean loginOK = targetAuthManager.authenticate(loginCredentials);
-            System.out.println("Login ok  "+loginOK);
             if (loginOK)
             {
                 final IDPInterface sourceIdp = AuthManagerFactory.getInstance().getAuthManagerInstance().getIDP();
@@ -100,7 +99,6 @@ public class MigrateUserAction extends AbstractMigrationAction
         }
         catch (final Exception e)
         {
-        	 System.out.println("Exception  "+e.getMessage());
             LOGGER.info("Exception: " + e.getMessage(), e);
             handleError(request, "errors.incorrectLoginIDPassword");
         }
