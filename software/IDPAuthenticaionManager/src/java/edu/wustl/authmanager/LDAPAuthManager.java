@@ -12,6 +12,8 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.naming.ldap.InitialLdapContext;
 
+import org.globus.gsi.GlobusCredential;
+
 import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.common.util.global.Validator;
 import edu.wustl.domain.LoginCredentials;
@@ -123,5 +125,14 @@ public class LDAPAuthManager extends IDPAuthManagerImpl
     {
         ctx.close();
     }
+
+
+
+	@Override
+	public String getIdentity(LoginCredentials credentials)
+			throws AuthenticationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

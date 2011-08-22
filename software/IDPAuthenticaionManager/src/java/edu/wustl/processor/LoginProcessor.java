@@ -35,7 +35,8 @@ public class LoginProcessor
 
     public static boolean authenticate(final LoginCredentials loginCredentials) throws AuthenticationException
     {
-        boolean isAuthentic;
+        
+    	boolean isAuthentic;
 
         final IDPAuthManager authManager = getAuthenticationManager(loginCredentials,
                 getUserDetails(loginCredentials.getLoginName()));
@@ -50,6 +51,7 @@ public class LoginProcessor
         }
 
         return isAuthentic;
+    	//return true;
     }
 
     private static IDPAuthManager getAuthenticationManager(final LoginCredentials loginCredentials,
@@ -220,6 +222,12 @@ public class LoginProcessor
     	}
         return isPresent;
     }
+    
+    public static boolean isUserPresentInApplicationDB(String loginName) throws ApplicationException {
+    	LoginCredentials c = new LoginCredentials();
+    	c.setLoginName(loginName);
+    	return isUserPresentInApplicationDB(c);
+    }
 
     /**
      * Process user login with migration info.
@@ -270,7 +278,7 @@ public class LoginProcessor
         	final IDPInterface sourceIdp = AuthManagerFactory.getInstance().getAuthManagerInstance().getIDP();
             if (sourceIdp.isMigrationEnabled())
             {
-                final String queryStr = "SELECT LOGIN_NAME, TARGET_IDP_NAME, MIGRATED_LOGIN_NAME,MIGRATION_STATUS FROM CSM_MIGRATE_USER WHERE MIGRATED_LOGIN_NAME = ? or LOGIN_NAME=?";
+                final String queryStr = "SELECT LOGIN_NAME, TARGET_IDP_NAME, MIGRATED_LOGIN_NAME,MIGRATION_STATUS,IDENTITY FROM CSM_MIGRATE_USER WHERE MIGRATED_LOGIN_NAME = ? or LOGIN_NAME=?";
 
                 final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
                 final ColumnValueBean loginNameBean = new ColumnValueBean(loginName);
@@ -289,6 +297,7 @@ public class LoginProcessor
                     userDetails.setTargetIDP(userDetailsRecord.get(1).toString());
                     userDetails.setMigratedLoginName(userDetailsRecord.get(2).toString());
                     userDetails.setMigrationState(MigrationState.get(userDetailsRecord.get(3).toString()));
+                    userDetails.setIdentity((userDetailsRecord.get(4).toString()));
                 }
             }
         }
