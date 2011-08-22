@@ -2,6 +2,8 @@ package edu.wustl.authmanager;
 
 import javax.naming.NamingException;
 
+import org.globus.gsi.GlobusCredential;
+
 import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.domain.LoginCredentials;
 import edu.wustl.idp.IDPInterface;
@@ -71,6 +73,28 @@ public class CAGridAuthManager extends IDPAuthManagerImpl
 	        }
 	        return true;
 	    }
+		@Override
+		public String getIdentity(LoginCredentials loginCredentials)
+				throws AuthenticationException {
+			String identity = null;
+			try
+	        {
+	            initialize();
+//	            synchronizePeriodic("");
+//	            synchronizeOnce("");
+	            GridAuthenticationClient.synchronizeOnce(syncDescFile);
+	            GlobusCredential credential = GridAuthenticationClient.authenticate(loginCredentials, dorianUrl, authenticationURL);
+	            if (credential != null) {
+	            	identity = credential.getIdentity();
+	            }
+//	            validateUser(loginCredentials, dorianUrl, authenticationURL);
+	        }
+	        catch (final Exception e)
+	        {
+	            throw new AuthenticationException(e);
+	        }
+	        return identity;
+		}
 
 //	    public static boolean synchronizePeriodic(String syncDescriptionFile)
 //		{

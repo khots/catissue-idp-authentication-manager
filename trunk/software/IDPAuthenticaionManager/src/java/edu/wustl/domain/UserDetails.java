@@ -5,8 +5,28 @@ import edu.wustl.migrator.MigrationState;
 public class UserDetails
 {
     private String loginName;
+    
+    private String password;
+    
+    private String identity;
 
-    private String migratedLoginName;
+    public String getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(String identity) {
+		this.identity = identity;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	private String migratedLoginName;
 
     private MigrationState migrationState;
 

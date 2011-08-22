@@ -1,5 +1,7 @@
 package edu.wustl.authmanager;
 
+import org.globus.gsi.GlobusCredential;
+
 import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.common.util.logger.Logger;
 import edu.wustl.domain.LoginCredentials;
@@ -49,5 +51,14 @@ public class CSMAuthManager extends IDPAuthManagerImpl
 
         return loginSuccess;
     }
+
+
+
+	@Override
+	public String getIdentity(LoginCredentials credentials)
+			throws AuthenticationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

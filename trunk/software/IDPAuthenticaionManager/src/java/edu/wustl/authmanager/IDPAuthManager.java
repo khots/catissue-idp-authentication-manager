@@ -14,6 +14,8 @@ import edu.wustl.idp.IDPInterface;
 public interface IDPAuthManager {
 
 	public boolean authenticate(LoginCredentials credentials)throws AuthenticationException;
+	
+	public String getIdentity(LoginCredentials credentials)throws AuthenticationException;
 
 	IDPInterface getIDP();
 
