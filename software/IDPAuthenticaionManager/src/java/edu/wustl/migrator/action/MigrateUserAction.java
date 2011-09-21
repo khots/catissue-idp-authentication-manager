@@ -85,6 +85,8 @@ public class MigrateUserAction extends AbstractMigrationAction
                         final UserDetails userDetails = new UserDetails();
                         userDetails.setLoginName(getSessionData(request).getUserName());
                         userDetails.setMigratedLoginName(migrationForm.getMigratedLoginName());
+                        userDetails.setTargetIDP(migrationForm.getTargetIdp());
+                        userDetails.setPassword(migrationForm.getMigratedPassword());
                         migrator.migrate(userDetails);
                         handleCustomMessage(request);
                         forwardTo = Constants.LOGIN;
