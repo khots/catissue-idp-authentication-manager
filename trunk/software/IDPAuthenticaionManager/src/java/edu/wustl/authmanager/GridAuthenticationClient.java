@@ -89,4 +89,28 @@ public class GridAuthenticationClient
 	        GlobusCredential credential = dorian.requestUserCertificate(saml, lifetime);
 	        return credential;
 	}
+	
+	public static SAMLAssertion getSAMLAssertion(LoginCredentials loginCredentials,String dorianURL, String authenticationURL)throws Exception
+	{
+		 BasicAuthentication auth = new BasicAuthentication();
+	        auth.setUserId(loginCredentials.getLoginName());
+	        auth.setPassword(loginCredentials.getPassword());
+
+	        // Authenticate to the IdP (DorianIdP) using credential
+
+	        AuthenticationClient authClient = new AuthenticationClient(authenticationURL);
+	        SAMLAssertion saml = authClient.authenticate(auth);
+
+	        // Requested Grid Credential lifetime (12 hours)
+
+	        CertificateLifetime lifetime = new CertificateLifetime();
+	        lifetime.setHours(12);
+
+	        // Request PKI/Grid Credential
+	        GridUserClient dorian = new GridUserClient(dorianURL);
+	        GlobusCredential credential = dorian.requestUserCertificate(saml, lifetime);
+	        return saml;
+	}
+	
+	
 }

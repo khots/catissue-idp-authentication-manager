@@ -1,13 +1,12 @@
 package edu.wustl.authmanager;
 
-import org.globus.gsi.GlobusCredential;
-
 import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.common.util.logger.Logger;
 import edu.wustl.domain.LoginCredentials;
 import edu.wustl.idp.IDPInterface;
 import edu.wustl.security.exception.SMException;
 import edu.wustl.security.manager.SecurityManagerFactory;
+import gov.nih.nci.cagrid.opensaml.SAMLAssertion;
 
 /**
  * @author supriya_dankh
@@ -56,6 +55,13 @@ public class CSMAuthManager extends IDPAuthManagerImpl
 
 	@Override
 	public String getIdentity(LoginCredentials credentials)
+			throws AuthenticationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SAMLAssertion getSAMLAssertion(LoginCredentials credentials)
 			throws AuthenticationException {
 		// TODO Auto-generated method stub
 		return null;
