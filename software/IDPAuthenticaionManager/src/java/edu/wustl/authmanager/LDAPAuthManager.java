@@ -12,13 +12,12 @@ import javax.naming.directory.SearchControls;
 import javax.naming.directory.SearchResult;
 import javax.naming.ldap.InitialLdapContext;
 
-import org.globus.gsi.GlobusCredential;
-
 import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.common.util.global.Validator;
 import edu.wustl.domain.LoginCredentials;
 import edu.wustl.idp.IDPInterface;
 import edu.wustl.migrator.util.Constants;
+import gov.nih.nci.cagrid.opensaml.SAMLAssertion;
 
 /**
  *
@@ -130,6 +129,13 @@ public class LDAPAuthManager extends IDPAuthManagerImpl
 
 	@Override
 	public String getIdentity(LoginCredentials credentials)
+			throws AuthenticationException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SAMLAssertion getSAMLAssertion(LoginCredentials credentials)
 			throws AuthenticationException {
 		// TODO Auto-generated method stub
 		return null;

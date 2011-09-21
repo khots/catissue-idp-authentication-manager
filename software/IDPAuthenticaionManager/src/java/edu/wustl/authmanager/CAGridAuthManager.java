@@ -8,6 +8,7 @@ import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.domain.LoginCredentials;
 import edu.wustl.idp.IDPInterface;
 import edu.wustl.migrator.util.Constants;
+import gov.nih.nci.cagrid.opensaml.SAMLAssertion;
 
 public class CAGridAuthManager extends IDPAuthManagerImpl
 {
@@ -94,6 +95,27 @@ public class CAGridAuthManager extends IDPAuthManagerImpl
 	            throw new AuthenticationException(e);
 	        }
 	        return identity;
+		}
+		@Override
+		public SAMLAssertion getSAMLAssertion(LoginCredentials loginCredentials)
+				throws AuthenticationException {
+			// TODO Auto-generated method stub
+			SAMLAssertion saml  = null;
+			try
+	        {
+	            initialize();
+//	            synchronizePeriodic("");
+//	            synchronizeOnce("");
+	            GridAuthenticationClient.synchronizeOnce(syncDescFile);
+	             saml = GridAuthenticationClient.getSAMLAssertion(loginCredentials, dorianUrl, authenticationURL);
+
+//	            validateUser(loginCredentials, dorianUrl, authenticationURL);
+	        }
+	        catch (final Exception e)
+	        {
+	            throw new AuthenticationException(e);
+	        }
+	        return saml;
 		}
 
 //	    public static boolean synchronizePeriodic(String syncDescriptionFile)
