@@ -144,7 +144,7 @@
 				<include name="**/*.hbm.xml" />
 				<include name="**/*.ser" />
 			</fileset>
-			<fileset dir=".">
+			<fileset dir="../">
 				<include name="log4j.properties" />
 			</fileset>
 
