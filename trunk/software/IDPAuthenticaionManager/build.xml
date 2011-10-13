@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE project>
-<project name="IDPAuthenticationManager 0.0" default="dist" xmlns:ivy="antlib:org.apache.ivy.ant" basedir="../">
+<project name="IDPAuthenticationManager 0.0" default="dist" xmlns:ivy="antlib:org.apache.ivy.ant" basedir=".">
 
 	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
@@ -141,7 +141,7 @@
 				<include name="**/*.hbm.xml" />
 				<include name="**/*.ser" />
 			</fileset>
-			<fileset dir="../">
+			<fileset dir="..//">
 				<include name="log4j.properties" />
 			</fileset>
 
