@@ -2,7 +2,9 @@
 <!DOCTYPE project>
 <project name="IDPAuthenticationManager 0.0" default="dist" xmlns:ivy="antlib:org.apache.ivy.ant" basedir=".">
 
-	<taskdef resource="net/sf/antcontrib/antcontrib.properties">
+    <import file="ivy-targets.xml" />
+
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
 		<classpath>
 			<pathelement location="${basedir}/src/test-lib/ant-contrib.jar" />
 		</classpath>
@@ -13,7 +15,6 @@
 	<property name="software.dir" value="${basedir}/.."/>
 
 	<property name="src.dir" value="${basedir}/src/main/java" />
-	<property name="local-ivy-repo.dir" value="${software.dir}/local-ivy-repo"/>
 	<property name="lib.dir" value="${basedir}/src/lib" />
 	<property name="test.lib.dir" value="${basedir}/src/test-lib" />
 	<property name="temp.src.classes.dir" value="${software.dir}/target/temp/src/classes"/>
@@ -124,7 +125,7 @@
 		</copy>
 	</target>
 
-	<target name="compile" depends="init,retrieve-ivy-files">
+	<target name="compile" depends="init, resolve">
 		<javac destdir="${temp.src.classes.dir}" includes="**/*.*" includeAntRuntime="false" debug="yes" target="1.5">
 			<src path="${src.dir}" />
 			<classpath>
@@ -150,7 +151,7 @@
 
 	<target name="dist" depends="compile">
 
-		<jar jarfile="${local-ivy-repo.dir}/IDPAuthenticationManager0_0.jar" >
+		<jar jarfile="${dist.dir}/IDPAuthenticationManager.jar" >
 			<fileset dir="${temp.src.classes.dir}" includes="**/*" >
 				<exclude name="**/*.properties" />
 				<exclude name="**/*.xml" />
@@ -332,43 +333,5 @@
 			</classpath>
 		</sql>
 	</target>
-	<!--ivy:retrieve related tags start here-->
-		<property name="common.dir" location="${software.dir}/common" />
-		<property name="target.dir" location="${software.dir}/target" />
-
-
-		<property name="bda-utils.dir" location="${target.dir}/bda-utils" />
-			<property name="project.properties.file" value="${software.dir}/build/project.properties" />
-			<property file="${project.properties.file}" />
-			<import file="${bda-utils.dir}/bda-build-utils-${bda.version}.xml" />
-
-
-			<path id="bda-utils.classpath">
-				<fileset dir="${bda-utils.dir}">
-					<include name="**/*.jar" />
-				</fileset>
-			</path>
-			<path id="ivy.classpath">
-				<fileset dir="${target.dir}/lib">
-					<include name="ivy-2.0.0.jar" />
-				</fileset>
-			</path>
-
-			<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.classpath" />
-			<taskdef name="xmltask" classname="com.oopsconsultancy.xmltask.ant.XmlTask"  classpathref="bda-utils.classpath"/>
-			<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="bda-utils.classpath"/>
-
-		<property name="ivy.settings.file" location="${common.dir}/ivy/cbiit-ivy-settings.xml" />
-				<target name="ivy-settings">
-					<property name="ivy.dep.file" value="${common.dir}/bda-download/ivy-bda.xml"/>
-					<ivy:settings file="${ivy.settings.file}"/>
-				</target>
-			<target name="retrieve-ivy-files" depends="ivy-settings"  description="Updates the local ivy repository">
-				<ivy:resolve refresh="true" conf="app_lib"/>
-				<ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].[ext]" conf="app_lib" />
-
-			</target>
-
-		<!--ivy:retrieve related tags end here-->
 
 </project>
