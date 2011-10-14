@@ -15,12 +15,11 @@
 	<property name="software.dir" value="${basedir}/.."/>
 
 	<property name="src.dir" value="${basedir}/src/main/java" />
-	<property name="lib.dir" value="${basedir}/src/lib" />
-	<property name="test.lib.dir" value="${basedir}/src/test-lib" />
+	<property name="lib.dir" value="${basedir}/lib" />
 	<property name="temp.src.classes.dir" value="${software.dir}/target/temp/src/classes"/>
 	<property name="temp.test.classes.dir" value="${software.dir}/target/temp/test/classes"/>
 
-	<property name="junit.jar" value="${test.lib.dir}/junit-4.1.jar" />
+	<property name="junit.jar" value="${lib.dir}/junit-4.1.jar" />
 	<property name="cobertura.dir" value="${basedir}/cobertura" />
 	<property name="report.dir" value="${software.dir}/target/reports" />
 
@@ -49,7 +48,7 @@
 	</path>
 
 	<path id="app.test.classpath">
-		<fileset dir="${test.lib.dir}">
+		<fileset dir="${lib.dir}">
 			<include name="*.jar" />
 		</fileset>
 	</path>
@@ -110,7 +109,7 @@
 				<fileset dir="${lib.dir}">
 					<include name="**/*.jar" />
 				</fileset>
-				<fileset dir="${test.lib.dir}">
+				<fileset dir="${lib.dir}">
 					<include name="**/*.jar" />
 				</fileset>
 			</classpath>
@@ -186,8 +185,8 @@
 	<target name="generate_codecoverage_report">
 		<ant target="compile_test_cases" />
 		<ant target="test" />
-		<ant antfile="${basedir}/src/conf/cobertura.xml" target="coverage.report" />
-		<ant antfile="${basedir}/src/conf/cobertura.xml" target="coverage.check" />
+		<ant antfile="${basedir}/conf/cobertura.xml" target="coverage.report" />
+		<ant antfile="${basedir}/conf/cobertura.xml" target="coverage.check" />
 	</target>
 
 	<!--
@@ -327,7 +326,7 @@
 				<fileset dir="${lib.dir}">
 					<include name="*.jar" />
 				</fileset>
-				<fileset dir="${test.lib.dir}">
+				<fileset dir="${lib.dir}">
 					<include name="*.jar" />
 				</fileset>
 			</classpath>
