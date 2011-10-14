@@ -99,6 +99,7 @@
 		<tstamp />
 		<mkdir dir="${temp.src.classes.dir}"/>
 		<mkdir dir="${temp.test.classes.dir}"/>
+		<mkdir dir="${lib.dir}"/>
 	</target>
 
 	<target name="compile_junit_TestCases">
@@ -175,12 +176,11 @@
 
 	<path id="junit.classpath">
 		<pathelement location="${junit.jar}" />
-		<pathelement location="${temp.dir}" />
 		<path refid="app.classpath" />
 		<path refid="app.test.classpath" />
 	</path>
 
-
+    <!--<taskdef classpathref="junit.classpath" resource="tasks.properties" />-->
 
 	<target name="generate_codecoverage_report">
 		<ant target="compile_test_cases" />
@@ -269,8 +269,6 @@
 	<!-- =================================================================== -->
 	<!-- Cobertura code coverage report                                      -->
 	<!-- =================================================================== -->
-
-	<taskdef classpathref="junit.classpath" resource="tasks.properties" />
 
 	<target name="gen_report_cobertura">
 		<antcall target="clean" />
