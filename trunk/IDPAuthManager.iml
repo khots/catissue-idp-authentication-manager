@@ -15,7 +15,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-ServiceSecurityProvider-service-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/cobertura-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -24,7 +24,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-ServiceSecurityProvider-stubs-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/clm-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -33,7 +33,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-metadata-security-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/cog-jglobus-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -42,7 +42,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/log4j.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/cog-axis-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -51,7 +51,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/jaxrpc.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/CaTissueSuite-stubs-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -60,7 +60,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/puretls.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/CaTissueSuite-service-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -69,7 +69,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-opensaml-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/cglib-2.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -78,7 +78,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/dom.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/CaTissueSuite-tests-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -87,7 +87,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/cryptix-asn1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commons-lang-1.0.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -96,7 +96,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-metadatautils-1.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commons-io-1.4-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -105,7 +105,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/commons-discovery.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commons-logging-1.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -114,7 +114,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-gts-common-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commons-logging-1.0.4-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -123,7 +123,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-dorian-stubs-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commonpackage-1.1.8.3.7-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -132,7 +132,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/ant-contrib.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commonpackage-1.1.8.2-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -141,7 +141,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-ServiceSecurityProvider-common-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commons-discovery-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -150,7 +150,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/commons-io-1.4.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commons-collections-2.1.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -159,7 +159,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/DAO-1.1.9.5.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-opensaml-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -168,7 +168,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/dom4j-1.6.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-ServiceSecurityProvider-client-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -177,7 +177,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/commons-logging-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-ServiceSecurityProvider-common-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -186,7 +186,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/cryptix32.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-ServiceSecurityProvider-service-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -195,7 +195,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/junit-4.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-gts-stubs-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -204,7 +204,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/mobius_common_client-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-metadata-common-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -213,7 +213,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/commonpackage-1.1.8.3.7.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-metadata-security-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -222,7 +222,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/servlet-2.3.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-metadatautils-1.4-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -231,7 +231,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-authentication-service-client-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/catissuecore-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -240,7 +240,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-core-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/catissuecore-client-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -249,7 +249,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/struts-legacy-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/CaTissueSuite-client-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -258,7 +258,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/struts-1.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/CaTissueSuite-common-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -267,7 +267,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/wsrf_core.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-ServiceSecurityProvider-stubs-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -276,7 +276,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/washu-commons-1.1.7.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-syncgts-client-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -285,7 +285,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-ServiceSecurityProvider-client-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-syncgts-common-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -294,7 +294,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/wsrf_core_stubs.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-syncgts-stubs-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -303,7 +303,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/catissuecore-client.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-authentication-service-common-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -312,7 +312,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/wss4j.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-authentication-service-client-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -321,7 +321,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/catissuecore.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/axis-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -330,7 +330,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/xmlunit-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/asm-tree-2.2.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -339,7 +339,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-syncgts-common-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/asm-2.2.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -348,7 +348,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/CaTissueSuite-tests.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/ant-contrib-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -357,7 +357,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/CaTissueSuite-service.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/addressing-1.0-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -366,7 +366,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/CaTissueSuite-stubs.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-gts-common-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -375,7 +375,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-syncgts-stubs-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-gts-client-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -384,7 +384,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/CaTissueSuite-common.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-gaards-core-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -393,7 +393,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/CaTissueSuite-client.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-dorian-stubs-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -402,7 +402,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-syncgts-client-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-dorian-common-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -411,7 +411,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-authentication-service-common-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-dorian-client-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -420,7 +420,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-dorian-client-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-core-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -429,7 +429,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/axis.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/caGrid-authentication-service-stubs-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -438,7 +438,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-authentication-service-stubs-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/xml-apis-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -447,7 +447,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/opencsv-1.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/WustlIdp-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -456,7 +456,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/globus_resolution_stubs_java.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/DAO-1.1.9.5.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -465,7 +465,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/commons-lang-1.0.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/xmlunit-1.3-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -474,7 +474,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/cog-jglobus.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/commonpackage-1.1.8.3.3.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -483,7 +483,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/addressing-1.0.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/spring-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -492,7 +492,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-gaards-core-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/servlet-2.3.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -501,7 +501,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-dorian-common-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/struts-legacy-1.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -510,7 +510,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/securityManager-1.1.7.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/struts-1.1-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -519,7 +519,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/ParticipantManager.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/wsrf_core-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -528,7 +528,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/jce-jdk13-125.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/washu-commons-1.1.7.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -537,7 +537,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/globus_transfer_stubs_java.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/washu-commons-1.1.7-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -546,7 +546,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/cog-axis.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/securityManager-1.1.7.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -555,7 +555,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-metadata-common-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/wss4j-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -564,7 +564,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-gts-stubs-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/wsrf_core_stubs-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -573,7 +573,286 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/src/lib/caGrid-gts-client-1.3.jar!/" />
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/mysql-connector-java-5.0.8-bin-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/ojdbc14-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/mmtxProject-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/mobius_common_client-1.1-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/puretls-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/securityManager-1.1.7.3-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/opencsv-1.8-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/ParticipantManager-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jce-jdk13-125-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jdom-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jboss-system-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jbossts-common-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/junit-4.1-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/log4j-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jnpserver-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jta-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jakarta-oro-2.0.8-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jakarta-oro-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/hibernate3-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/globus_transfer_stubs_java-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jboss-jmx-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jboss-j2ee-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jboss-common-client-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/jaxrpc-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/DAO-1.1.9.5-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/csmapi-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/cryptix32-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/cryptix-asn1-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/globus_resolution_stubs_java-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/ehcache-1.2.3-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/dom4j-1.6-1.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/software/IDPAuthenticaionManager/lib/dom-1.0.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
