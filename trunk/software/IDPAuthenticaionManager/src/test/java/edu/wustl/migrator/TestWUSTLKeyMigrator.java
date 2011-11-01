@@ -4,6 +4,7 @@ import edu.wustl.BaseTestCase;
 import edu.wustl.auth.exception.AuthenticationException;
 import edu.wustl.authmanager.IDPAuthManager;
 import edu.wustl.authmanager.factory.AuthManagerFactory;
+import edu.wustl.dao.exception.DAOException;
 import edu.wustl.domain.UserDetails;
 import edu.wustl.migrator.exception.MigratorException;
 
@@ -35,6 +36,9 @@ public class TestWUSTLKeyMigrator extends BaseTestCase
         catch (final MigratorException migratorException)
         {
             fail("test_Migrate_User failed due to " + migratorException.getMessage());
+        } catch (DAOException e) {
+            fail("test_Migrate_User failed due to " + e.getMessage());
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
     }
