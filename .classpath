@@ -7,7 +7,6 @@
 	<classpathentry kind="src" path="software/IDPAuthenticaionManager/src/test/resources"/>
 	<classpathentry kind="src" path="software/IDPAuthenticaionManager/src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/CommonPackage_refactor"/>
 	<classpathentry kind="lib" path="software/IDPAuthenticaionManager/lib/addressing-1.0-1.0.jar"/>
 	<classpathentry kind="lib" path="software/IDPAuthenticaionManager/lib/ant-contrib-1.0.jar"/>
 	<classpathentry kind="lib" path="software/IDPAuthenticaionManager/lib/asm-2.2.1-1.0.jar"/>
