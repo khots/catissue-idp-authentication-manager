@@ -1,5 +1,11 @@
 <ivy-module version="2.0">
-    <info organisation="gov.nih.nci.catissue" module="idp-authentication-manager"/>
+	<info organisation="gov.nih.nci.catissue" module="idp-authentication-manager" revision="${idp.jar.version}" status="integration" />
+	
+	<publications>
+		<artifact name="IDPAuthenticationManager" ext="jar" type="jar" />
+		<artifact name="idp-authentication-manager" type="pom" ext="pom" />
+	</publications>
+	
     <dependencies>
 
 <!--
