@@ -34,7 +34,7 @@ public class LoginProcessor
      */
     private static final Logger LOGGER = Logger.getCommonLogger(LoginProcessor.class);
 
-    public static boolean authenticate(final LoginCredentials loginCredentials) throws AuthenticationException
+    public static boolean authenticate(final LoginCredentials loginCredentials) throws AuthenticationException, ApplicationException
     {
         boolean isAuthentic;
 
@@ -47,6 +47,19 @@ public class LoginProcessor
         }
         else
         {
+        	// Changes made for allowing loginName to be case insensitive.
+        	// Retrieve loginName from database and set to loginCredentials.
+        	final String queryStr = "SELECT * FROM CATISSUE_USER WHERE UPPER(LOGIN_NAME) = ?";
+        	final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
+            final ColumnValueBean columnValueBean = new ColumnValueBean(loginCredentials.getLoginName().toUpperCase());
+            parameters.add(columnValueBean);
+            
+            final List<List<String>> resultList = Utility.executeQueryUsingDataSource(queryStr, parameters, false,
+                     CommonServiceLocator.getInstance().getAppName());
+            if (resultList != null && !resultList.isEmpty() && "Active".equalsIgnoreCase(resultList.get(0).get(6)))
+            {
+            	loginCredentials.setLoginName(resultList.get(0).get(4));
+            }
             isAuthentic = authManager.authenticate(loginCredentials);
         }
 
@@ -204,10 +217,10 @@ public class LoginProcessor
     private static boolean isUserPresentInApplicationDB(final LoginCredentials loginCredentials)
             throws ApplicationException
     {
-        final String queryStr = "SELECT * FROM CATISSUE_USER WHERE LOGIN_NAME = ?";
+        final String queryStr = "SELECT * FROM CATISSUE_USER WHERE UPPER(LOGIN_NAME) = ?";
         final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
 
-        final ColumnValueBean columnValueBean = new ColumnValueBean(loginCredentials.getLoginName());
+        final ColumnValueBean columnValueBean = new ColumnValueBean(loginCredentials.getLoginName().toUpperCase());
         parameters.add(columnValueBean);
         final List<List<String>> resultList = Utility.executeQueryUsingDataSource(queryStr, parameters, false,
                 CommonServiceLocator.getInstance().getAppName());
@@ -249,7 +262,7 @@ public class LoginProcessor
          loginResult.setMigratedLoginName(userDetails.getMigratedLoginName());
          loginResult.setAuthenticationSuccess(true);
          loginResult.setMigrationState(userDetails.getMigrationState());
-         if(userDetails.getMigrationState().equals(MigrationState.MIGRATED) && !loginCredentials.getLoginName().equals(userDetails.getMigratedLoginName()))
+         if(userDetails.getMigrationState().equals(MigrationState.MIGRATED) && !loginCredentials.getLoginName().equalsIgnoreCase(userDetails.getMigratedLoginName()))
          {
         	 // user is migrated but has used his application id to login
         	 loginResult.setAuthenticationSuccess(false);
@@ -274,11 +287,11 @@ public class LoginProcessor
         	final IDPInterface sourceIdp = AuthManagerFactory.getInstance().getAuthManagerInstance().getIDP();
             if (sourceIdp.isMigrationEnabled())
             {
-                final String queryStr = "SELECT LOGIN_NAME,WUSTLKEY FROM CSM_MIGRATE_USER WHERE WUSTLKEY = ? or LOGIN_NAME=?";
+                final String queryStr = "SELECT LOGIN_NAME,WUSTLKEY FROM CSM_MIGRATE_USER WHERE UPPER(WUSTLKEY) = ? or UPPER(LOGIN_NAME)=?";
 
                 final List<ColumnValueBean> parameters = new ArrayList<ColumnValueBean>();
-                final ColumnValueBean loginNameBean = new ColumnValueBean(loginName);
-                final ColumnValueBean migratedLoginNameBean = new ColumnValueBean(loginName);
+                final ColumnValueBean loginNameBean = new ColumnValueBean(loginName.toUpperCase());
+                final ColumnValueBean migratedLoginNameBean = new ColumnValueBean(loginName.toUpperCase());
 
                 parameters.add(loginNameBean);
                 parameters.add(migratedLoginNameBean);
