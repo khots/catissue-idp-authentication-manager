@@ -16,24 +16,36 @@ import edu.wustl.common.util.global.ApplicationProperties;
  * related action classes.
  *
  * @author niharika_sharma
+ * @author Ion C. Olaru
+ *
  */
 public abstract class AbstractMigrationAction extends Action
 {
 
     /**
      * Handle error.
-     *
-     * @param request
-     *            the request
-     * @param errorKey
-     *            the error key
+     * @param request the request
+     * @param errorKey the error key
      */
-    protected void handleError(final HttpServletRequest request, final String errorKey)
-    {
+    protected void handleError(final HttpServletRequest request, final String errorKey) {
         final ActionErrors errors = new ActionErrors();
         errors.add(ActionErrors.GLOBAL_ERROR, new ActionError(errorKey));
-        if (!errors.isEmpty())
-        {
+        if (!errors.isEmpty()) {
+            saveErrors(request, errors);
+        }
+    }
+
+    /**
+     * Handle error with the specified replacement values
+     * @author Ion C. Olaru
+     * @param request the request
+     * @param errorKey the error key
+     * @param values error values
+     */
+    protected void handleError(final HttpServletRequest request, final String errorKey, Object[] values) {
+        final ActionErrors errors = new ActionErrors();
+        errors.add(ActionErrors.GLOBAL_ERROR, new ActionError(errorKey, values));
+        if (!errors.isEmpty()) {
             saveErrors(request, errors);
         }
     }

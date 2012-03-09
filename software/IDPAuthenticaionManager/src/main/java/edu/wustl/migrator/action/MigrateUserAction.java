@@ -29,6 +29,7 @@ import edu.wustl.dao.exception.DAOException;
  * calling the migrate method defined in the appropriate migrator class.
  *
  * @author niharika_sharma
+ * @author Ion C. Olaru
  *
  */
 public class MigrateUserAction extends AbstractMigrationAction
@@ -47,18 +48,16 @@ public class MigrateUserAction extends AbstractMigrationAction
      * javax.servlet.http.HttpServletResponse)
      */
     @Override
-    public ActionForward execute(final ActionMapping mapping, final ActionForm form,
-            final HttpServletRequest request, final HttpServletResponse response) throws MigratorException, DAOException
-    {
+    public ActionForward execute(final ActionMapping mapping, final ActionForm form, final HttpServletRequest request, final HttpServletResponse response) throws MigratorException, DAOException {
         String forwardTo = Constants.FAILURE;
         final MigrationForm migrationForm = (MigrationForm) form;
+        final LoginCredentials loginCredentials = new LoginCredentials();
      //   migrationForm.setTargetIdp("WUSTLKEY_IDP");
         try
         {
             final IDPAuthManager targetAuthManager = AuthManagerFactory.getInstance().getAuthManagerInstance(
                     migrationForm.getTargetIdp());
 
-            final LoginCredentials loginCredentials = new LoginCredentials();
             loginCredentials.setLoginName(migrationForm.getMigratedLoginName());
             loginCredentials.setPassword(migrationForm.getMigratedPassword());
 
@@ -102,16 +101,15 @@ public class MigrateUserAction extends AbstractMigrationAction
         }
         // ------Niranjan's changes start here
         // @ Bugid 19485:
-        catch (final DAOException e)
-        {
+        catch (final DAOException e) {
             LOGGER.info("Exception: " + e.getMessage(), e);
             handleError(request, "errors.LoginIDNotAvailable");
         }
         //-------Niranjan's changes end here
-        catch (final Exception e)
-        {
+        catch (final Exception e) {
             LOGGER.info("Exception: " + e.getMessage(), e);
-            handleError(request, "errors.incorrectLoginIDPassword");
+            LOGGER.debug(">>> Can not login with user: " + loginCredentials.getLoginName());
+            handleError(request, "errors.incorrectLoginIDPassword", new Object[] {loginCredentials.getLoginName()});
         }
         return mapping.findForward(forwardTo);
     }
