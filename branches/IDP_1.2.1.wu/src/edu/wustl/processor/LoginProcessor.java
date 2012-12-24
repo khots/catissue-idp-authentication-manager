@@ -205,7 +205,7 @@ public class LoginProcessor
                     .get(edu.wustl.migrator.util.Constants.RULE_CLASS_TAG_NAME);
 
             final RuleInterface rule = (RuleInterface) edu.wustl.common.util.Utility.getObject(ruleClassName);
-            if (rule.checkMigrationRules(loginCredentials))
+            if (rule!=null && rule.checkMigrationRules(loginCredentials))
             {
                 isMigrationApplicable = true;
                 break;
