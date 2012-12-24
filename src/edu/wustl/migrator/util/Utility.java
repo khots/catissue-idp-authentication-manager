@@ -208,7 +208,7 @@ public class Utility
 
                 final LoginCredentials baseIdpCredentials = new LoginCredentials();
                 baseIdpCredentials.setLoginName(userDetails.getLoginName());
-                if (rule.checkMigrationRules(baseIdpCredentials))
+                if (rule==null || rule.checkMigrationRules(baseIdpCredentials))
                 {
                     final IDPAuthManager targetAuthManager = AuthManagerFactory.getInstance()
                             .getAuthManagerInstance(Constants.WUSTL_IDP);
@@ -247,7 +247,7 @@ public class Utility
                 final String targetIdpName = (String) properties
                         .get(edu.wustl.migrator.util.Constants.TARGET_IDP_TAG_NAME);
 
-                if (targetIdpName.equals(Constants.CSM))
+                if (!Constants.CSM.equals(targetIdpName))
                 {
                     final String ruleClassName = (String) properties
                             .get(edu.wustl.migrator.util.Constants.RULE_CLASS_TAG_NAME);
@@ -256,7 +256,7 @@ public class Utility
 
                     final LoginCredentials baseIdpCredentials = new LoginCredentials();
                     baseIdpCredentials.setLoginName(userDetails.getLoginName());
-                    if (rule.checkMigrationRules(baseIdpCredentials))
+                    if (rule==null || rule.checkMigrationRules(baseIdpCredentials))
                     {
                         stistifiesRule = true;
                         break;
