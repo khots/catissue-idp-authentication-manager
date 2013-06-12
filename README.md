@@ -1,8 +1,7 @@
 Welcome to the caTissue IDP Authentication Manager Project!
 ===========================================================
 
-The caTissue IDP Authentication Manager is used by caTissue Suite for IDP integration.
-caTissue IDP Authentication Manager is an Open Source project. It is written in Java using caGrid, Apache Commons, Hibernate, Spring framework technologies.
+caTissue IDP Authentication Manager is an Open Source project used by caTissue Suite for IDP integration. It is written in Java using caGrid, Apache Commons, Hibernate, Spring framework technologies.
 
 The caTissue IDP Authentication Manager is distributed under the BSD 3-Clause License.
 Please see the NOTICE and LICENSE files for details.
