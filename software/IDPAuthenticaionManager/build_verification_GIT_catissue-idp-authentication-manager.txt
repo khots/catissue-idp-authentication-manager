@@ -1,0 +1,352 @@
+Buildfile: C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\build.xml
+
+clean:
+   [delete] Deleting directory C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\lib
+   [delete] Deleting directory C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\target\temp\src\classes
+   [delete] Deleting directory C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\target\temp\test\classes
+
+init:
+    [mkdir] Created dir: C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\target\temp\src\classes
+    [mkdir] Created dir: C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\target\temp\test\classes
+    [mkdir] Created dir: C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\lib
+
+download-ivy:
+    [mkdir] Created dir: C:\Users\konkapv\.ivy
+     [echo] Installing ivy...
+      [get] Getting: http://repo1.maven.org/maven2/org/apache/ivy/ivy/2.0.0/ivy-2.0.0.jar
+      [get] To: C:\Users\konkapv\.ivy\ivy.jar
+
+init-ivy:
+
+resolve:
+No ivy:settings found for the default reference 'ivy.instance'.  A default instance will be used
+[ivy:retrieve] :: Ivy 2.0.0 - 20090108225011 :: http://ant.apache.org/ivy/ ::
+:: loading settings :: file = C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivysettings.xml
+[ivy:retrieve] :: resolving dependencies :: gov.nih.nci.catissue#idp-authentication-manager;1.0.1-SNAPSHOT
+[ivy:retrieve] 	confs: [default]
+[ivy:retrieve] 	found local#IDPAuthManager;1.0 in local-repo-jars
+[ivy:retrieve] 	found gov.nih.nci.catissue#security-manager;1.1.7.3-SNAPSHOT in nci-mvn-nexus
+[ivy:retrieve] 	found gov.nih.nci.catissue#commons;1.3.1-SNAPSHOT in nci-mvn-nexus
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commons-io-1.4.jar ...
+[ivy:retrieve] ... (106kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commons-io-1.4.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\CaTissueSuite-common.jar ...
+[ivy:retrieve] .. (21kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!CaTissueSuite-common.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\struts-legacy-1.1.jar ...
+[ivy:retrieve] .. (10kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!struts-legacy-1.1.jar (15ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-gts-common-1.3.jar ...
+[ivy:retrieve] .. (19kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-gts-common-1.3.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\ParticipantManager.jar ...
+[ivy:retrieve] ... (84kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!ParticipantManager.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\struts-1.1.jar ...
+[ivy:retrieve] ......... (486kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!struts-1.1.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\junit-4.1.jar ...
+[ivy:retrieve] ... (109kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!junit-4.1.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\puretls.jar ...
+[ivy:retrieve] .... (186kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!puretls.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\ant-contrib.jar ...
+[ivy:retrieve] .... (189kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!ant-contrib.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\CaTissueSuite-stubs.jar ...
+[ivy:retrieve] ... (101kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!CaTissueSuite-stubs.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\dom.jar ...
+[ivy:retrieve] .. (25kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!dom.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commons-lang-1.0.1.jar ...
+[ivy:retrieve] .. (62kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commons-lang-1.0.1.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\axis.jar ...
+[ivy:retrieve] ........................ (1416kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!axis.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\servlet-2.3.1.jar ...
+[ivy:retrieve] ... (75kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!servlet-2.3.1.jar (8ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-core-1.3.jar ...
+[ivy:retrieve] .... (148kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-core-1.3.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\log4j.jar ...
+[ivy:retrieve] ....... (347kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!log4j.jar (15ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commons-collections-2.1.1.jar ...
+[ivy:retrieve] .... (171kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commons-collections-2.1.1.jar (263ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jdom.jar ...
+[ivy:retrieve] .... (149kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jdom.jar (8ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\cryptix-asn1.jar ...
+[ivy:retrieve] ... (78kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!cryptix-asn1.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-syncgts-stubs-1.3.jar ...
+[ivy:retrieve] .... (131kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-syncgts-stubs-1.3.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-syncgts-client-1.3.jar ...
+[ivy:retrieve] .. (13kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-syncgts-client-1.3.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\csmapi.jar ...
+[ivy:retrieve] ..... (216kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!csmapi.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jakarta-oro.jar ...
+[ivy:retrieve] .. (63kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jakarta-oro.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\cobertura.jar ...
+[ivy:retrieve] .... (189kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!cobertura.jar (8ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\DAO-1.1.9.5.jar ...
+[ivy:retrieve] ... (102kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!DAO-1.1.9.5.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\cglib-2.1.jar ...
+[ivy:retrieve] ...... (275kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!cglib-2.1.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\hibernate3.jar ...
+[ivy:retrieve] ................................ (1925kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!hibernate3.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\catissuecore-client.jar ...
+[ivy:retrieve] .... (147kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!catissuecore-client.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commons-logging-1.1.jar ...
+[ivy:retrieve] .. (51kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commons-logging-1.1.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\CaTissueSuite-client.jar ...
+[ivy:retrieve] .. (10kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!CaTissueSuite-client.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\wsrf_core_stubs.jar ...
+[ivy:retrieve] .......... (572kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!wsrf_core_stubs.jar (7ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-metadata-security-1.3.jar ...
+[ivy:retrieve] .. (27kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-metadata-security-1.3.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\mysql-connector-java-5.0.8-bin.jar ...
+[ivy:retrieve] .......... (528kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!mysql-connector-java-5.0.8-bin.jar (21ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-authentication-service-client-1.3.jar ...
+[ivy:retrieve] .. (17kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-authentication-service-client-1.3.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\mobius_common_client-1.1.jar ...
+[ivy:retrieve] .... (137kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!mobius_common_client-1.1.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\ehcache-1.2.3.jar ...
+[ivy:retrieve] ..... (203kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!ehcache-1.2.3.jar (16ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\CaTissueSuite-service.jar ...
+[ivy:retrieve] .. (24kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!CaTissueSuite-service.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\globus_transfer_stubs_java.jar ...
+[ivy:retrieve] .. (11kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!globus_transfer_stubs_java.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\asm-2.2.1.jar ...
+[ivy:retrieve] .. (33kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!asm-2.2.1.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\mmtxProject.jar ...
+[ivy:retrieve] .................................................................................................................. (7184kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!mmtxProject.jar (22ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jce-jdk13-125.jar ...
+[ivy:retrieve] ................. (993kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jce-jdk13-125.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-dorian-stubs-1.3.jar ...
+[ivy:retrieve] ....... (368kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-dorian-stubs-1.3.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\asm-tree-2.2.1.jar ...
+[ivy:retrieve] .. (15kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!asm-tree-2.2.1.jar (18ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-gaards-core-1.3.jar ...
+[ivy:retrieve] ... (92kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-gaards-core-1.3.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-dorian-common-1.3.jar ...
+[ivy:retrieve] .. (20kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-dorian-common-1.3.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jta.jar ...
+[ivy:retrieve] .. (8kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jta.jar (14ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-ServiceSecurityProvider-service-1.3.jar ...
+[ivy:retrieve] .. (4kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-ServiceSecurityProvider-service-1.3.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-gts-client-1.3.jar ...
+[ivy:retrieve] .. (17kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-gts-client-1.3.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\CaTissueSuite-tests.jar ...
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!CaTissueSuite-tests.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\WustlIdp.jar ...
+[ivy:retrieve] .. (2kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!WustlIdp.jar (14ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commonpackage-1.1.8.3.7.jar ...
+[ivy:retrieve] ...... (275kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commonpackage-1.1.8.3.7.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jboss-system.jar ...
+[ivy:retrieve] ...... (260kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jboss-system.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-dorian-client-1.3.jar ...
+[ivy:retrieve] ... (72kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-dorian-client-1.3.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-ServiceSecurityProvider-common-1.3.jar ...
+[ivy:retrieve] .. (1kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-ServiceSecurityProvider-common-1.3.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\opencsv-1.8.jar ...
+[ivy:retrieve] .. (8kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!opencsv-1.8.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commonpackage-1.1.8.2.jar ...
+[ivy:retrieve] ...... (267kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commonpackage-1.1.8.2.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jbossts-common.jar ...
+[ivy:retrieve] .. (63kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jbossts-common.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\spring.jar ...
+[ivy:retrieve] ............................ (1719kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!spring.jar (14ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\cog-jglobus.jar ...
+[ivy:retrieve] ............ (644kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!cog-jglobus.jar (14ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-syncgts-common-1.3.jar ...
+[ivy:retrieve] .. (32kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-syncgts-common-1.3.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-gts-stubs-1.3.jar ...
+[ivy:retrieve] ..... (203kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-gts-stubs-1.3.jar (16ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-metadata-common-1.3.jar ...
+[ivy:retrieve] ... (105kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-metadata-common-1.3.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jboss-j2ee.jar ...
+[ivy:retrieve] ........ (413kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jboss-j2ee.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\washu-commons-1.1.7.jar ...
+[ivy:retrieve] ... (101kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!washu-commons-1.1.7.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\clm.jar ...
+[ivy:retrieve] ... (73kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!clm.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-metadatautils-1.4.jar ...
+[ivy:retrieve] ... (66kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-metadatautils-1.4.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\ojdbc14.jar ...
+[ivy:retrieve] ......................... (1519kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!ojdbc14.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-ServiceSecurityProvider-client-1.3.jar ...
+[ivy:retrieve] .. (9kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-ServiceSecurityProvider-client-1.3.jar (8ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jnpserver.jar ...
+[ivy:retrieve] .. (47kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jnpserver.jar (8ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commons-discovery.jar ...
+[ivy:retrieve] ... (72kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commons-discovery.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-ServiceSecurityProvider-stubs-1.3.jar ...
+[ivy:retrieve] .. (17kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-ServiceSecurityProvider-stubs-1.3.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jboss-jmx.jar ...
+[ivy:retrieve] ............... (859kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jboss-jmx.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-authentication-service-stubs-1.3.jar ...
+[ivy:retrieve] ... (117kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-authentication-service-stubs-1.3.jar (16ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\cryptix32.jar ...
+[ivy:retrieve] ....... (357kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!cryptix32.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\xml-apis.jar ...
+[ivy:retrieve] ... (120kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!xml-apis.jar (12ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jaxrpc.jar ...
+[ivy:retrieve] .. (34kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jaxrpc.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\wss4j.jar ...
+[ivy:retrieve] ......... (502kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!wss4j.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-opensaml-1.3.jar ...
+[ivy:retrieve] .... (143kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-opensaml-1.3.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\dom4j-1.6.jar ...
+[ivy:retrieve] ...... (306kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!dom4j-1.6.jar (8ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jakarta-oro-2.0.8.jar ...
+[ivy:retrieve] .. (63kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jakarta-oro-2.0.8.jar (9ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\commons-logging-1.0.4.jar ...
+[ivy:retrieve] .. (37kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!commons-logging-1.0.4.jar (10ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\addressing-1.0.jar ...
+[ivy:retrieve] ... (84kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!addressing-1.0.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\wsrf_core.jar ...
+[ivy:retrieve] ............ (652kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!wsrf_core.jar (19ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\cog-axis.jar ...
+[ivy:retrieve] .. (29kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!cog-axis.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\caGrid-authentication-service-common-1.3.jar ...
+[ivy:retrieve] .. (10kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!caGrid-authentication-service-common-1.3.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\securityManager-1.1.7.3.jar ...
+[ivy:retrieve] .. (55kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!securityManager-1.1.7.3.jar (11ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\jboss-common-client.jar ...
+[ivy:retrieve] ........ (397kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!jboss-common-client.jar (13ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\xmlunit-1.3.jar ...
+[ivy:retrieve] ... (94kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!xmlunit-1.3.jar (15ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\catissuecore.jar ...
+[ivy:retrieve] ............... (878kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!catissuecore.jar (108ms)
+[ivy:retrieve] downloading C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\ivy.local.jars\globus_resolution_stubs_java.jar ...
+[ivy:retrieve] .. (22kB)
+[ivy:retrieve] 	[SUCCESSFUL ] local#IDPAuthManager;1.0!globus_resolution_stubs_java.jar (9ms)
+[ivy:retrieve] downloading https://ncimvn.nci.nih.gov/nexus/content/repositories/snapshots/gov/nih/nci/catissue/security-manager/1.1.7.3-SNAPSHOT/security-manager-1.1.7.3-SNAPSHOT.pom ...
+[ivy:retrieve] .. (1kB)
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] gov.nih.nci.catissue#security-manager;1.1.7.3-SNAPSHOT!security-manager.pom (828ms)
+[ivy:retrieve] downloading https://ncimvn.nci.nih.gov/nexus/content/repositories/snapshots/gov/nih/nci/catissue/security-manager/1.1.7.3-SNAPSHOT/SecurityManager-1.1.7.3-SNAPSHOT.jar ...
+[ivy:retrieve] ................ (55kB)
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] gov.nih.nci.catissue#security-manager;1.1.7.3-SNAPSHOT!SecurityManager.jar (898ms)
+[ivy:retrieve] downloading https://ncimvn.nci.nih.gov/nexus/content/repositories/snapshots/gov/nih/nci/catissue/commons/1.3.1-SNAPSHOT/TreeApplet-1.3.1-SNAPSHOT.jar ...
+[ivy:retrieve] .... (9kB)
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] gov.nih.nci.catissue#commons;1.3.1-SNAPSHOT!TreeApplet.jar (782ms)
+[ivy:retrieve] downloading https://ncimvn.nci.nih.gov/nexus/content/repositories/snapshots/gov/nih/nci/catissue/commons/1.3.1-SNAPSHOT/washu-commons-1.3.1-SNAPSHOT.jar ...
+[ivy:retrieve] .................................................................................................................... (455kB)
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] gov.nih.nci.catissue#commons;1.3.1-SNAPSHOT!washu-commons.jar (993ms)
+[ivy:retrieve] downloading https://ncimvn.nci.nih.gov/nexus/content/repositories/snapshots/gov/nih/nci/catissue/commons/1.3.1-SNAPSHOT/washu-commons-src-1.3.1-SNAPSHOT.jar ...
+[ivy:retrieve] .................................................................................................. (381kB)
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] gov.nih.nci.catissue#commons;1.3.1-SNAPSHOT!washu-commons-src.jar (1156ms)
+[ivy:retrieve] downloading https://ncimvn.nci.nih.gov/nexus/content/repositories/snapshots/gov/nih/nci/catissue/commons/1.3.1-SNAPSHOT/washu-commons-1.3.1-SNAPSHOT.pom ...
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] .. (0kB)
+[ivy:retrieve] 	[SUCCESSFUL ] gov.nih.nci.catissue#commons;1.3.1-SNAPSHOT!washu-commons.pom (805ms)
+[ivy:retrieve] :: resolution report :: resolve 4573ms :: artifacts dl 6980ms
+	---------------------------------------------------------------------
+	|                  |            modules            ||   artifacts   |
+	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+	---------------------------------------------------------------------
+	|      default     |   3   |   3   |   3   |   0   ||   96  |   96  |
+	---------------------------------------------------------------------
+[ivy:retrieve] 
+[ivy:retrieve] 
+[ivy:retrieve] :: USE VERBOSE OR DEBUG MESSAGE LEVEL FOR MORE DETAILS
+[ivy:retrieve] :: retrieving :: gov.nih.nci.catissue#idp-authentication-manager
+[ivy:retrieve] 	confs: [default]
+[ivy:retrieve] 	96 artifacts copied, 0 already retrieved (28833kB/1060ms)
+
+postResolve:
+
+compile:
+    [javac] Compiling 36 source files to C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\target\temp\src\classes
+    [javac] Note: C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\src\main\java\edu\wustl\migrator\util\Utility.java uses or overrides a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] Note: Some input files use unchecked or unsafe operations.
+    [javac] Note: Recompile with -Xlint:unchecked for details.
+     [copy] Copying 7 files to C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\target\temp\src\classes
+
+dist:
+      [jar] Building jar: C:\DEV\GIT-WORK\catissue\catissue-idp-authentication-manager\software\IDPAuthenticaionManager\dist\IDPAuthenticationManager.jar
+
+BUILD SUCCESSFUL
+Total time: 17 seconds
