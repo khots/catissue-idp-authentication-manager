@@ -1,12 +1,8 @@
 caTissue IDP Authentication Manager
 Copyright (c) 2010, Washington University in St. Louis, SemanticBits, Persistent Systems, Krishagni
 
-
 This project is distributed under the BSD 3-Clause License.
 Please see LICENSE file for details.
-
-
-caTissue Suite uses JASIG CAS (Common Authentication Service) to provide Single Sign-On support with other applications. The caTissue application uses the HTTP request filter provided by CAS to intercept all requests and redirect the user to the Login page in case the user is not already logged in.
 
 The project was initially developed by Washington University in St. Louis, SemanticBits, Persistent Systems and Krishagni under funding from the CBIIT office of the National Cancer Institute.
 
