@@ -9,7 +9,7 @@ Please see the NOTICE and LICENSE files for details.
 
 You will find more details about the caTissue IDP Authentication Manager in the following links:
  * [caTissue Tools wiki] (https://wiki.nci.nih.gov/display/caTissue/caTissue+Tools+Wiki)
- * [caTissue wiki] (https://wiki.nci.nih.gov/display/caTissuedoc/caTissue+Documentation+Wiki)
+ * [caTissue Documentation Wiki] (https://wiki.nci.nih.gov/display/caTissuedoc/caTissue+Documentation+Wiki)
  * [Issue Tracker] (https://bugzilla.wustl.edu/bugzilla/)
  * [Code Repository] (https://github.com/NCIP/catissue-idp-authentication-manager)
  
