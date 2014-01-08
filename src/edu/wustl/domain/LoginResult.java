@@ -34,8 +34,16 @@ public class LoginResult
 
     /** The migration state. */
     private MigrationState migrationState;
-
-    /**
+    
+    private Boolean isAccountLocked;
+    
+    private String lastLoginTime;
+    
+    private Boolean lastLoginActivityStatus;
+    
+    private int remainingAttemptsIndex;
+    
+	/**
      * Checks if is authentication success.
      *
      * @return true, if is authentication success
@@ -45,7 +53,45 @@ public class LoginResult
         return authenticationSuccess;
     }
 
-    /**
+    public Boolean isAccountLocked() {
+		return isAccountLocked;
+	}
+
+	public void setIsAccountLocked(Boolean isAccountLocked) {
+		this.isAccountLocked = isAccountLocked;
+	}
+
+	
+	public String getLastLoginTime() {
+		return lastLoginTime;
+	}
+
+	
+	public void setLastLoginTime(String lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	
+	public Boolean getLastLoginActivityStatus() {
+		return lastLoginActivityStatus;
+	}
+
+	
+	public void setLastLoginActivityStatus(Boolean lastLoginActivityStatus) {
+		this.lastLoginActivityStatus = lastLoginActivityStatus;
+	}
+
+	
+	public int getRemainingAttemptsIndex() {
+		return remainingAttemptsIndex;
+	}
+
+	
+	public void setRemainingAttemptsIndex(int remainingAttemptsIndex) {
+		this.remainingAttemptsIndex = remainingAttemptsIndex;
+	}
+
+	/**
      * Sets the authentication success.
      *
      * @param authenticationSuccess the new authentication success
