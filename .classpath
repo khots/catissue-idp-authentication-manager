@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/commonpackage-1.1.8.3.3.jar"/>
 	<classpathentry kind="lib" path="lib/DAO-1.1.9.5.jar"/>
 	<classpathentry kind="lib" path="lib/dom.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.jar"/>
-	<classpathentry kind="lib" path="lib/junit-4.1.jar"/>
-	<classpathentry kind="lib" path="lib/log4j-1.2.9.jar"/>
 	<classpathentry kind="lib" path="lib/securityManager-1.1.7.2.jar"/>
 	<classpathentry kind="lib" path="lib/servlet-2.3.1.jar"/>
 	<classpathentry kind="lib" path="lib/struts-1.1.jar"/>
@@ -20,5 +17,7 @@
 	<classpathentry kind="lib" path="test-lib/jakarta-oro.jar"/>
 	<classpathentry kind="lib" path="test-lib/junit-4.1.jar"/>
 	<classpathentry kind="lib" path="test-lib/ojdbc14.jar"/>
+	<classpathentry kind="lib" path="lib/ant-contrib.jar"/>
+	<classpathentry kind="lib" path="lib/log4j.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

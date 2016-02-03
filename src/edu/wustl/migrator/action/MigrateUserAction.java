@@ -1,4 +1,4 @@
-/*L
+/*
  *  Copyright Washington University in St. Louis
  *  Copyright SemanticBits
  *  Copyright Persistent Systems
